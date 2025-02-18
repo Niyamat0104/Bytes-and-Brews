@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Rating</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <style>
+        body {
+    background-image: url('https://i.pinimg.com/736x/0a/48/c0/0a48c0cac1a127ac3f63436f4d97bbe0.jpg');
+    background-size: cover;                     
+    background-position: center;                
+    background-repeat: no-repeat;               
+    background-attachment: fixed;
+    
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+/* Back button styling */
+#back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#back-btn:hover {
+    background-color: #555;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Feedback container: Increase width for larger form */
+.feedback-container {
+    background: rgba(255, 255, 255, 0.85); /* Light background for contrast */
+    opacity: 0.8;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 500px; /* Increased width */
+}
+
+/* User info fields (username and email): block-level and full width */
+.user-info input {
+    width: 100%;               /* Make input fields full width */
+    padding: 12px;              /* Increase padding for larger input fields */
+    margin: 10px 0;             /* Add space between input fields */
+    border: 1px solid #ccc;
+    border-radius: 8px;         /* Slightly rounded corners */
+    font-size: 16px;
+    display: block;             /* Ensure block-level display */
+    box-sizing: border-box;     /* Include padding in width calculation */
+}
+
+/* Emoji container */
+.emoji-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.emoji {
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease, color 0.2s ease;
+}
+
+.emoji:hover {
+    transform: scale(1.2);
+}
+
+/* Selected emoji effect */
+.selected {
+    transform: scale(2);  
+    filter: brightness(1.8);
+    color: #FFD700; /* Bright yellow */
+}
+
+/* Comment box */
+textarea {
+    width: 100%;
+    height: 80px; /* Slightly larger height for comment box */
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+}
+
+/* Submit button */
+#submit-btn {
+    background: linear-gradient(135deg, #6F4E37, #4B2E24);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+#submit-btn:hover, #submit-btn:focus {
+    background: linear-gradient(135deg, #8B5E3C, #5B3A2A);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(139, 90, 60, 0.5);
+}
+
+#submit-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+    </style>
+</head>
+<body>
+    <button id="back-btn" onclick="goBack()">&#8592; Back</button>
+
+    <div class="feedback-container">
+        <form action="{{url_for('feedback')}}" method="POST"> 
+        <h2>How are you feeling?</h2>
+        <p>Your input is valuable in helping us improve our service.</p>
+
+        <div class="user-info">
+            <input type="text" id="username" placeholder="Enter your username" required name="username">
+            <input type="email" id="email" placeholder="Enter your email" required name="email">
+        </div>
+
+        <div class="emoji-container">
+            <span class="emoji" data-value="1">😫</span>
+            <span class="emoji" data-value="2">😞</span>
+            <span class="emoji" data-value="3">😐</span>
+            <span class="emoji" data-value="4">😊</span>
+            <span class="emoji" data-value="5">😍</span>
+        </div>
+
+        <input type="hidden" id="rating-value" name="rating">
+        <textarea id="comment" placeholder="Add a comment..." name="comment"></textarea>
+
+        <button id="submit-btn">SUBMIT NOW</button>
+        </form>
+    </div>
+
+    <script>
+
+function goBack() {
+        window.history.back(); // This will take the user to the previous page
+    }
+    const emojis = document.querySelectorAll(".emoji");
+const ratingValue = document.getElementById("rating-value");
+
+emojis.forEach(emoji => {
+    emoji.addEventListener("click", function() {
+        // Remove previous selection
+        emojis.forEach(e => e.classList.remove("selected"));
+
+        // Highlight selected emoji
+        this.classList.add("selected");
+
+        // Store selected value
+        ratingValue.value = this.dataset.value;
+    });
+});
+</script>
+</body>
+</html>

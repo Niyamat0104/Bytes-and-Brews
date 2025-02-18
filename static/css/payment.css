@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body, html {
+    font-family: 'Antine', sans-serif;
+    height: 100%;
+    background: url('../images/WhatsApp\ Image\ 2025-02-09\ at\ 15.08.38_c958a641.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: #4d3319;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .card {
+    background-color: rgba(255, 250, 240, 0.9); /* Warm coffee cream color */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    width: 100%;
+    max-width: 600px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); /* Card hover effect */
+  }
+  
+  h2 {
+    font-size: 2.2em;
+    color: #3a2210;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  /* Payment Option Styling */
+  .payment-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #d1b086;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f2e5d8;
+  }
+  
+  .payment-option:hover, .payment-option.selected {
+    border-color: #8b5c2e;
+    background-color: #ead8c4;
+  }
+  
+  .payment-option img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .payment-info {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  .payment-info span {
+    display: block;
+    font-size: 1.2em;
+    color: #4d3319;
+  }
+  
+  .payment-info .expiry {
+    color: gray;
+    font-size: 0.9em;
+  }
+  
+  .payment-option .status {
+    color: #8b5c2e;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+  
+  .add-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: 2px dashed #8b5c2e;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: #f8f1e7;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-payment:hover {
+    background-color: #e6d4c1;
+  }
+  
+  .add-payment img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    width: 100%;
+    background-color: #8b5c2e;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #5f3d1c;
+  }
+  
+  /* Order Summary Section */
+  .order-details div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 1.2em;
+    color: #4d3319;
+  }
+  
+  .savings {
+    color: #3b8d22;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  button {
+    background-color: #8b5c2e;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5f3d1c;
+  }
+  
+  .authenticity-message {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #555;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+/* Logo Styling for Top-Left */
+.logo-container {
+    position: absolute;
+    top: 20px; /* Distance from the top */
+    left: 40px; /* Distance from the left */
+    z-index: 10; /* Ensures it stays on top of other elements */
+  }
+  
+  .logo-container img {
+    width: 120px; /* Adjust the size as needed */
+    height: auto;
+  }
+  

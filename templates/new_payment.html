@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brew and Bytes - Payment Page</title>
+  <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+  <link rel="stylesheet" href="../static/css/payment.css">
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="../static/images/Bytes___Brew_1_-removebg-preview.png" alt="Brew and Bytes Logo">
+  </div>
+
+  <div class="container">
+    <!-- Payment Section -->
+    <div class="card">
+      <h2>Choose your payment method</h2>
+  
+      <div class="payment-option" data-method="Visa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+        <div class="payment-info">
+          <span>XXXX XXXX XXXX 8908</span>
+          <span class="expiry">Expires 09/27</span>
+        </div>
+        <span class="status">Default</span>
+      </div>
+  
+      <div class="payment-option" data-method="MasterCard">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+        <div class="payment-info">
+          <span>XXXX XXXX XXXX 7777</span>
+          <span class="expiry">Expires 01/24</span>
+        </div>
+      </div>
+  
+      <div class="payment-option" data-method="PayPal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+        <div class="payment-info">
+          <span>XXXX XXXX XXXX 6498</span>
+          <span class="expiry">Expires 12/23</span>
+        </div>
+      </div>
+  
+      <div class="add-payment">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxp0v4qZkvQmZySNXWh4Q1mB41AM9zl_5D-g&s" alt="Add Payment">
+        <span>Add Payment Method</span>
+      </div>
+  
+      <button class="submit-btn">Submit</button>
+    </div>
+  
+    <!-- Order Summary Section -->
+    <div class="card order-summary">
+      <h2>Order Summary</h2>
+      <div class="order-details">
+        <div><span>Bag:</span><span>{{order_items}}</span></div>
+        <div><span>Subtotal:</span><span>₹{{subtotal}}</span></div>
+        <div><span>GST</span><span id="price">₹{{gst}}</span></div>
+        <div>Total : ₹{{total}}</div>
+      </div>
+      <a style="text-decoration: none;color:white" href="{{url_for('payment_successfull')}}"> <button id="payBtn"> Pay  ₹{{total}}</button></a>
+      <div class="authenticity-message">
+        Enjoy your order. Have a good day.
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="../static/js/payment.js"></script>
+</body>
+</html>

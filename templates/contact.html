@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us Form</title>
+    <link rel="stylesheet" href="../static/css/contactUs.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+DE+Grund:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        /* box-sizing: border-box; */
+      }
+
+      body {
+        min-height: 100vh;
+        width: 100%;
+        background-image: url("https://i.pinimg.com/736x/6a/c0/de/6ac0de736181b0b13ff2c05c5ad5698a.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000; /* Ensures it stays above all elements */
+        padding: 0; /* Removes any padding */
+        margin: 0; /* Removes any margin */
+      }
+
+      header a img {
+        width: 150px; /* Adjust the size as needed */
+        height: auto;
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        right: 50px;
+        bottom: 40px;
+      }
+
+      .container {
+        width: 80%;
+        background-color: #f8f4e1;
+        border-radius: 6px;
+        padding: 30px 60px 40px 40px;
+        /* box-shadow: 0 0 32px 5px rgb(107, 204, 94); */
+        z-index: 40px;
+      }
+
+      .container .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .container .content .left-side {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        position: relative;
+      }
+
+      .content .left-side::before {
+        content: "";
+        position: absolute;
+        height: 80%;
+        width: 2px;
+        right: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: black;
+      }
+
+      .content .left-side .details {
+        margin-left: 14px;
+        text-align: center;
+      }
+
+      .content .left-side .details .icon-close {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      .content .left-side .details .topic {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .content .left-side .details .text-one,
+      .content .left-side .details .text-two {
+        font-size: 14px;
+        color: #9e9ea3;
+      }
+
+      .container .content .right-side {
+        width: 75%;
+        margin-left: 75px;
+      }
+
+      .content .right-side .topic-text {
+        font-size: 30px;
+        font-weight: 600;
+        color: #543310;
+      }
+
+      .right-side .input-box {
+        height: 50px;
+        width: 100%;
+        margin: 12px 0;
+      }
+
+      .right-side .input-box input,
+      .right-side .input-box textarea {
+        height: 100%;
+        width: 100%;
+        border: none;
+        font-size: 16px;
+        background-color: #d8d4b7;
+        border-radius: 6px;
+        padding: 0 15px;
+      }
+
+      .right-side .message-box {
+        min-height: 110px;
+        margin-top: 6px;
+      }
+
+      .poppins-light {
+        font-family: "Poppins", serif;
+        font-weight: 600;
+        font-style: bold;
+      }
+
+      .right-side .btn {
+        display: inline-block;
+        margin-top: 12px;
+        /* width: 20px; */
+        /* background-color: green;
+height: 20px; */
+      }
+
+      .right-side .btn {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(to right, #af8f6f, #74512d);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        background: linear-gradient(to right, #74512d, #af8f6f);
+        transform: scale(1.05);
+      }
+
+      header a {
+        color: white;
+        font-size: 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 30px 70px;
+      }
+
+      header a:hover {
+        color: rgb(207, 233, 191);
+      }
+
+      .error {
+        color: red;
+        font-size: 16px;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: fadeIn 0.5s forwards;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
+    <header>
+      <a href="{{url_for('admin')}}">
+        <img src="../static/images/logo1-removebg-preview.png" alt="" />
+      </a>
+    </header>
+    <div class="container">
+      <div class="content">
+        <div class="left-side">
+          <div class="address details">
+            <span class="icon-close"
+              ><ion-icon name="location-sharp"></ion-icon
+            ></span>
+            <div class="topic">Address</div>
+            <div class="text-one">Chitkara University</div>
+            <div class="text-two">Rajpura</div>
+            <br />
+          </div>
+          <div class="phone details">
+            <span class="icon-close"> <ion-icon name="call"></ion-icon></span>
+            <div class="topic">Phone</div>
+            <div class="text-one">+0098 9893 5674</div>
+            <div class="text-two">+0096 5426 2458</div>
+            <br />
+          </div>
+          <div class="email details">
+            <span class="icon-close"
+              ><ion-icon name="mail-sharp"></ion-icon
+            ></span>
+            <div class="topic">Email</div>
+            <div class="text-one">abc35@gmail.com</div>
+            <div class="text-two">info.abc35@gmail.com</div>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="topic-text">
+            <h3 class="poppins-light">CONTACT US</h3>
+          </div>
+          <br />
+          <p>
+            If you have any work or any type of queries, feel free to Contact
+            Us.
+          </p>
+          <form id="contactForm">
+            <div class="input-box">
+              <input type="text" id="username" placeholder="Username" />
+              <div class="error" id="usernameError"></div>
+            </div>
+            <div class="input-box">
+              <input type="email" id="email" placeholder="Email" />
+              <div class="error" id="emailError"></div>
+            </div>
+            <div class="input-box">
+              <input type="tel" id="phone" placeholder="Enter Phone number" />
+              <div class="error" id="phoneError"></div>
+            </div>
+            <div class="input-box message-box">
+              <textarea id="query" placeholder="Query"></textarea>
+              <div class="error" id="queryError"></div>
+            </div>
+            <button type="button" class="btn" onclick="validateForm()">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+  <script src="../static/js/contactUs.js"></script>
+</html>

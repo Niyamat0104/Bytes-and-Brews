@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <title>Bytes and Brew - Customer Reviews</title>
+    <style>
+        :root {
+            --primary-blue: #040B24;
+            --secondary-blue: #0A1A4D;
+            --beige-light: rgb(245, 232, 211);
+            --beige-medium: rgb(226, 199, 163);
+            --beige-dark: rgb(186, 152, 116);
+            --text-light: #F0F4FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-blue);
+            padding: 20px;
+            background-image: url('data:image/jpeg;base64,<ADD_BASE64_IMAGE_HERE>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--text-light);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--beige-light);
+        }
+
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: var(--secondary-blue);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            color: var(--text-light);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--beige-dark);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .review-date {
+            color: var(--beige-medium);
+            font-size: 0.9em;
+        }
+
+        .review-content {
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bytes and Brew - Customer Reviews</h1>
+    </div>
+    <div class="reviews-container" id="reviewsContainer">
+        {% for review in reviews %}
+        <div class="review-card" id="review-{{review.id}}">
+            <div class="review-header">
+
+                <div class="avatar">{{review.username[0]}}</div>
+                <div class="name">{{review.username}}</div>
+                <div class="user-info">
+                    <div class="user-name">
+                        {{ review.name }} 
+                        {% if   review.rating|int == 1 %}
+                            😫
+                        {% elif   review.rating|int == 2 %}
+                            😞
+                        {% elif review.rating|int == 3 %}
+                            😐
+                        {% elif review.rating|int == 4 %}
+                            😊
+                        {% else %}
+                            😍
+                        {% endif %}
+                
+                    </div>
+                     
+                </div>
+            </div>
+            <div class="review-content">{{review.comment}}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- <script>
+        const reviews = [
+            { id: 1, name: "Sarah Chen", date: "Feb 12, 2025", content: "The cold brew here is perfectly balanced.", initials: "SC", emoji: "😊" },
+            { id: 2, name: "Mike Rodriguez", date: "Feb 11, 2025", content: "Best breakfast spot in town!", initials: "MR", emoji: "😍" },
+            { id: 3, name: "Emma Wilson", date: "Feb 10, 2025", content: "Love their seasonal drink specials.", initials: "EW", emoji: "😊" },
+            { id: 4, name: "David Park", date: "Feb 9, 2025", content: "Their pastries are baked fresh daily.", initials: "DP", emoji: "😐" },
+            { id: 5, name: "Lisa Thompson", date: "Feb 8, 2025", content: "Perfect spot for remote work.", initials: "LT", emoji: "😍" },
+            { id: 6, name: "James Kumar", date: "Feb 7, 2025", content: "The grilled chicken sandwich is delicious.", initials: "JK", emoji: "😊" },
+            { id: 7, name: "Anna Martinez", date: "Feb 6, 2025", content: "Great coffee and atmosphere.", initials: "AM", emoji: "😊" },
+            { id: 8, name: "Tom Anderson", date: "Feb 5, 2025", content: "Love the minimalist decor.", initials: "TA", emoji: "😐" },
+            { id: 9, name: "Rachel Kim", date: "Feb 4, 2025", content: "Amazing latte art!", initials: "RK", emoji: "😍" },
+            { id: 10, name: "Chris Baker", date: "Feb 3, 2025", content: "The weekend brunch is outstanding.", initials: "CB", emoji: "😊" },
+            { id: 11, name: "Olivia Chen", date: "Feb 2, 2025", content: "The chai latte is perfect for study.", initials: "OC", emoji: "😊" },
+            { id: 12, name: "Peter Smith", date: "Feb 1, 2025", content: "Great selection of vegan options.", initials: "PS", emoji: "😐" },
+            { id: 13, name: "Maya Patel", date: "Jan 31, 2025", content: "The breakfast burrito is amazing.", initials: "MP", emoji: "😊" },
+            { id: 14, name: "Kevin Lee", date: "Jan 30, 2025", content: "c", initials: "KL", emoji: "😍" },
+            { id: 15, name: "Sophie Turner", date: "Jan 29, 2025", content: "The atmosphere is cozy and welcoming.", initials: "ST", emoji: "😊" }
+        ];
+
+        function createReviewCard(review) {
+            return `
+                <div class="review-card" id="review-${review.id}">
+                    <div class="review-header">
+                        <div class="avatar">${review.initials}</div>
+                        <div class="user-info">
+                            <div class="user-name">${review.name} ${review.emoji}</div>
+                            <div class="review-date">${review.date}</div>
+                        </div>
+                    </div>
+                    <div class="review-content">${review.content}</div>
+                </div>
+            `;
+        }
+
+        function displayReviews() {
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = reviews.map(review => createReviewCard(review)).join('');
+        }
+
+        // Initial display
+        displayReviews();
+    </script> -->
+</body>
+</html>
+

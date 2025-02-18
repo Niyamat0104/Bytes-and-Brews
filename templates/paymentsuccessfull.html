@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Bytes and Brew</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Import the Antine font */
+        @font-face {
+            font-family: 'Antine';
+            src: url('fonts/Antine.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Antine', sans-serif;
+            background: linear-gradient(135deg, #907059 30%, #ebc7a0 90%);
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, p {
+            margin: 0;
+        }
+
+        /* Payment Success Container */
+        .container {
+            background: #fff;
+            color: #333;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 500px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 1s ease-in-out forwards;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Tick Mark */
+        .tick-mark-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .tick-mark {
+            font-size: 80px;
+            color: #4CAF50;
+            font-weight: bold;
+            animation: bounceTick 0.8s;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Success Message */
+        .success-message h2 {
+            font-family: 'Antine', sans-serif; /* Change to Antine */
+            font-size: 40px;
+            color: #6f4e37;
+            font-weight: 900;
+        }
+
+        .success-message p {
+            font-family: 'Antine', sans-serif; /* Change to Antine */
+            font-size: 22px;
+            color: #444;
+        }
+
+        /* Coffee Cup and Order Details */
+        .coffee-cup-container {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            flex-direction: column;
+            animation: moveInCup 1.5s ease-in-out forwards;
+        }
+
+        .coffee-cup {
+            position: relative;
+        }
+
+        .coffee-cup img {
+            width: 350px;
+            filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .order-details {
+            margin-right: 40px;
+            text-align: right;
+            color: white;
+        }
+
+        .order-details p {
+            margin: 10px 0;
+            font-size: 24px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounceTick {
+            0% { transform: scale(0.5); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideContainer {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-350px); }
+        }
+
+        @keyframes moveInCup {
+            0% { opacity: 0; transform: translateY(300px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Confetti complete styles */
+        body.confetti-complete .container {
+            animation: slideContainer 1.5s ease-in-out forwards;
+        }
+
+        body.confetti-complete .coffee-cup-container {
+            display: flex;
+        }
+
+        /* Button Styles */
+        .button {
+            background-color: #6f4e37;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            background-color: #8b5e3c;
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body onload="showConfetti()">
+
+    <div class="container">
+        <div class="tick-mark-container">
+            <div class="tick-mark">✔</div>
+        </div>
+        <div class="success-message">
+            <h2>Payment Successful!</h2>
+            <p>Your order is being prepared.</p>
+        </div>
+    </div>
+
+    <div class="coffee-cup-container">
+        <a href="{{url_for('order_now')}}"> <button style="border-radius: 10px;color: white;background-color: #6f4e37;padding: 10px;margin-bottom: 10px;">Order Again</button> </a>
+         
+        <div class="order-details">
+            <p>Order No. <strong>#12345</strong></p>
+            <p>Delivery in <strong>30</strong> minutes</p>
+        </div>
+        <div class="coffee-cup">
+            <img src="../static/images/Bytes___Brew_1_-removebg-preview.png" alt="Coffee Cup">
+        </div>
+    </div>
+
+    <button class="button">Continue Shopping</button>
+
+    <script>
+        function goBack() {
+        window.history.back(); // This will take the user to the previous page
+    }
+        function showConfetti() {
+            const duration = 2000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 4,
+                    startVelocity: 25,
+                    spread: 60,
+                    origin: { x: Math.random(), y: Math.random() - 0.2 },
+                    colors: ['#6f4e37', '#FFD700', '#FF5733']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                } else {
+                    document.body.classList.add('confetti-complete');
+                    showCup();
+                }
+            })();
+        }
+
+        function showCup() {
+            const cupContainer = document.querySelector('.coffee-cup-container');
+            cupContainer.style.display = 'flex';
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            // Clear cart after successful payment
+            localStorage.removeItem('cart');  
+        });
+    </script>
+
+</body>
+</html>

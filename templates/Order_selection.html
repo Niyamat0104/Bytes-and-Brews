@@ -1,0 +1,299 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/order_selection.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            
+          <img
+            src="../static/images/logo-removebg-preview.png"
+            alt="Custom Logo"
+          />
+        </div>
+        <nav class="nav-links">
+          <a href="{{url_for('home')}}" class="active">Home</a>
+          <a href="{{url_for('menu')}}">Menu</a>
+          <a href="{{url_for('order_now')}}">Order Now</a>
+          <a href="{{url_for('cart')}}">Cart</a>
+          <a href="{{url_for('feedback')}}">Feedback</a>
+        </nav>
+        <div class="search-container">
+          <i class="fas fa-search"><ion-icon name="search"></ion-icon></i>
+          <input type="text" placeholder="Looking for something specific?" />
+        </div>
+        <div class="profile-icon">
+          <a href="{{url_for('signup')}}"> <i class="fas fa-user"><ion-icon name="person"></ion-icon></i></a>
+        </div>
+    </header>
+    <div id="only_strip" style="background-color:#d3bd9a; height: 60px; margin-bottom: 30px;">
+       
+    </div>
+    <main>
+        <h2 style="margin-left:30px ;">{{item.subsubcategory}}</h2>
+        <div id="main_pic"> 
+        <img src="{{item.image}}" class="main_image">
+        <div style="margin-top: 100px;font-size: 20px;"> 
+        <h1 style="color: #feb; ">{{item.name}}</h1>
+        <h2>280 Calories</h2>
+        </div>
+        </div>
+     
+        <div class="container">
+            <h2>Size Options</h2>
+            <div class="size-options" id="sizeOptions"></div>
+            
+            <div class="section">
+                <h3>What's Included</h3>
+                <div class="included-item">
+                    <span class="item-title">Milk</span>
+                    <span>Foam</span>
+                </div>
+                <div class="included-item">
+                    <span class="item-title">Milk</span>
+                    <span>Steamed Hot</span>
+                </div>
+                <div class="included-item">
+                    <span class="item-title">Milk</span>
+                    <span>2% Milk</span>
+                </div>
+                <div class="included-item">
+                    <span class="item-title">Tea</span>
+                    <span>Matcha Powder scoops</span>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="adjustScoops(-1)">-</button>
+                        <span id="scoops">3</span>
+                        <button class="quantity-btn" onclick="adjustScoops(1)">+</button>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <span class="item-title">Sweeteners</span>
+                    <span>Classic Syrup pumps</span>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="adjustSyrup(-1)">-</button>
+                        <span id="syrup">3</span>
+                        <button class="quantity-btn" onclick="adjustSyrup(1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+    </main>
+        
+         
+</body>
+<script>
+        const cupSizes = [
+            { name: 'Short', size: '8 fl oz', symbol: '☕' },
+            { name: 'Tall', size: '12 fl oz', symbol: '🍵' },
+            { name: 'Grande', size: '16 fl oz', symbol: '🥤' },
+            { name: 'Venti', size: '20 fl oz', symbol: '🧃' }
+        ];
+
+        const sizeContainer = document.getElementById('sizeOptions');
+        let selectedCup = 'Grande';
+
+        function renderCups() {
+            sizeContainer.innerHTML = '';
+            cupSizes.forEach(cup => {
+                const div = document.createElement('div');
+                div.className = 'cup' + (cup.name === selectedCup ? ' selected' : '');
+                div.innerHTML = `<span class='cup-symbol'>${cup.symbol}</span><strong>${cup.name}</strong><br>${cup.size}`;
+                div.onclick = () => selectCup(cup.name);
+                sizeContainer.appendChild(div);
+            });
+        }
+
+        function selectCup(name) {
+            selectedCup = name;
+            renderCups();
+        }
+
+        function adjustScoops(change) {
+            let scoopElement = document.getElementById('scoops');
+            let scoops = parseInt(scoopElement.innerText) + change;
+            if (scoops > 0) scoopElement.innerText = scoops;
+        }
+
+        function adjustSyrup(change) {
+            let syrupElement = document.getElementById('syrup');
+            let syrup = parseInt(syrupElement.innerText) + change;
+            if (syrup > 0) syrupElement.innerText = syrup;
+        }
+
+        renderCups();
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Selection</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/order_selection.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../static/images/logo-removebg-preview.png" alt="Custom Logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="{{url_for('home')}}" class="active">Home</a>
+            <a href="{{url_for('menu')}}">Menu</a>
+            <a href="{{url_for('order_now')}}">Order Now</a>
+            <a href="{{url_for('cart')}}">Cart</a>
+            <a href="{{url_for('feedback')}}">Feedback</a>
+        </nav>
+        <div class="search-container">
+            <ion-icon name="search"></ion-icon>
+            <input type="text" placeholder="Looking for something specific?" />
+        </div>
+        <div class="profile-icon">
+            <a href="{{url_for('signup')}}"> <ion-icon name="person"></ion-icon></a>
+        </div>
+    </header>
+
+    <div id="only_strip" style="background-color:#d3bd9a; height: 60px; margin-bottom: 30px;"></div>
+
+    <main>
+        <h2 style="margin-left:30px;">{{ item.subsubcategory }}</h2>
+        <div id="main_pic"> 
+            <img src="{{ item.image }}" class="main_image">
+            <div style="margin-top: 100px; font-size: 20px;"> 
+                <h1 style="color: #feb;">{{ item.name }}</h1>
+                <h2>Price : ₹{{item.Price}}</h2>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Size Options</h2>
+            <div class="size-options" id="sizeOptions"></div>
+
+            <form id="orderForm" action="{{ url_for('new_cart') }}" method="POST" style="display: none;">
+                <input type="hidden" name="item_name" value="{{ item.name }}">
+                <input type="hidden" name="item_price" value="{{ item.Price }}">
+                <input type="hidden" name="item_image" value="{{ item.image }}">
+                <input type="hidden" name="item_category" value="{{ item.category }}">
+                <input type="hidden" name="item_subcategory" value="{{item.subcategory}}">
+                <input type="hidden" name="item_subsubcategory" value="{{ item.subsubcategory}}">
+                <input type="hidden" name="item_size" id="selectedSize" value="Grande - 16 fl oz">
+            </form>
+
+            <button class="add-to-cart-btn" onclick="submitForm()">Add to Cart</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Company</a></li>
+                    <li><a href="#">Our Coffee</a></li>
+                    <li><a href="#">About Bytes & Brew</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Careers</h3>
+                <ul>
+                    <li><a href="#">Culture and Values</a></li>
+                    <li><a href="#">Jobs at Bytes & Brew</a></li>
+                    <li><a href="#">College Achievement Plan</a></li>
+                    <li><a href="#">Alumni Community</a></li>
+                    <li><a href="#">International Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social Impact</h3>
+                <ul>
+                    <li><a href="#">Communities</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Environmental Impact</a></li>
+                    <li><a href="#">Foundation Work</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Order and Pick Up</h3>
+                <ul>
+                    <li><a href="#">Order on the App</a></li>
+                    <li><a href="#">Order on the Web</a></li>
+                    <li><a href="#">Delivery Options</a></li>
+                    <li><a href="#">Pick Up Locations</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+            </div>
+            <div class="footer-column">
+            </div>
+        </div>
+  
+        <div class="footer-social">
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+        </div>
+  
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bytes & Brew, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+</body>  
+    <script>
+        const cupSizes = [
+    { name: 'Short', size: '8 fl oz', symbol: '☕' },
+    { name: 'Tall', size: '12 fl oz', symbol: '🍵' },
+    { name: 'Grande', size: '16 fl oz', symbol: '🥤' },
+    { name: 'Venti', size: '20 fl oz', symbol: '🧃' }
+];
+
+const sizeContainer = document.getElementById('sizeOptions');
+let selectedCup = 'Grande';
+
+function renderCups() {
+    sizeContainer.innerHTML = '';
+    cupSizes.forEach(cup => {
+        const div = document.createElement('div');
+        div.className = 'cup' + (cup.name === selectedCup ? ' selected' : '');
+        div.innerHTML = `<span class='cup-symbol'>${cup.symbol}</span><strong>${cup.name}</strong><br>${cup.size}`;
+        div.onclick = () => selectCup(cup.name, cup.size);
+        sizeContainer.appendChild(div);
+    });
+}
+
+function selectCup(name, size) {
+    selectedCup = name;
+    document.getElementById("selectedSize").value = name + " - " + size; // Update hidden input field
+    renderCups();
+}
+
+// Initial rendering of cups
+renderCups();
+
+        function submitForm() {
+        // Get the selected size option (if available)
+        const sizeElement = document.querySelector('input[name="size"]:checked');
+        if (sizeElement) {
+            document.getElementById("selectedSize").value = sizeElement.value;
+        }
+
+        // Submit the form
+        document.getElementById("orderForm").submit();
+    }
+         
+    </script>
+ 
+</html>

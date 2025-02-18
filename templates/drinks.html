@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <title>Drinks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e5dc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #6f4e37;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 90px;
+        }
+
+        .lora-font {
+            font-family: "Lora", serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #d3bd9a;
+            font-size: 18px;
+            position: relative;
+            font-weight: bolder;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #d3bd9a;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #e0ceb2;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 130px;
+        }
+
+        .search-container input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .search-container i {
+            color: gray;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .profile-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e0ceb2;
+            margin-right: 50px;
+        }
+
+        .profile-icon i {
+            color: gray;
+            font-size: 18px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #d3bd9a;
+            /* Dark coffee background */
+            color: #6f4e37;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff7f0;
+            /* width: 340px; */
+            margin: 10px;
+        }
+
+        .menu-item img {
+            width: 270px;
+            height: 300px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Heading and description */
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .menu-item .default-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Style for the options container */
+        .options-container {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        /* Option group container */
+        .option-group {
+            margin-bottom: 10px;
+        }
+
+        /* Label styling */
+        .option-group label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        /* Style for the select dropdowns */
+        .select-option {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Hover effect for select options */
+        .select-option:hover {
+            border-color: #6f4e37;
+        }
+
+        /* Focus effect for select options */
+        .select-option:focus {
+            outline: none;
+            border-color: #664229;
+            box-shadow: 0 0 5px rgba(111, 78, 55, 0.5);
+        }
+
+        /* Style for the "Add to Cart" button */
+        .menu-buttons {
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu-button {
+            background-color: #6f4e37;
+            color: white;
+            padding: 12px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .menu-button:hover {
+            background-color: #664229;
+        }
+
+        .footer {
+            /* background-color: #D3BD9A; */
+            background-image: url(../static/images/footer\(3\).png);
+            color: #333;
+            padding: 40px 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            font-family: "Buda", serif;
+            font-weight: 450;
+            font-style: normal;
+        }
+
+        .footer-column {
+            flex: 1 1 150px;
+            margin: 0 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .footer-social a {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #937661;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../static/images/l1-removebg-preview.png" alt="Custom Logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="{{url_for('home')}}" class="active">Home</a>
+            <a href="{{url_for('menu')}}">Menu</a>
+            <a href="{{url_for('order_now')}}">Order</a>
+            <a href="{{url_for('cart')}}">Cart</a>
+            <a href="{{url_for('feedback')}}">Feedback</a>
+        </nav>
+        <div class="search-container">
+            <i class="fa fa-search" style="font-size:20px"></i>
+            <input type="text" placeholder="Looking for something?" />
+        </div>
+        <div class="profile-icon">
+            <a href="{{url_for('signup')}}"> <i class="	fa fa-user" style="font-size:32px"></i></a>
+        </div>
+    </header>
+
+    <div class="header" style="letter-spacing: 2px;">DRINK'S</div>
+
+    <div class="menu-container">
+
+        <div class="menu-item">
+            <img src="../static/images/Cookie Crumble.jpg" alt="Strawberry Milkshake">
+            <h3>Cookies & Coffee Crunch </h3>
+            <p class="default-text">A mix of cookies, coffee, and vanilla ice cream, topped with cookie crumbs..</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-strawberry-shake" class="select-option">
+                        <option value="short">Short - ₹ 160</option>
+                        <option value="medium">Tall - ₹ 230</option>
+                        <option value="grande">Grande - ₹ 280</option>
+                        <option value="venti">Venti - ₹ 320</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-strawberry-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-strawberry-shake" class="select-option">
+                        <option value="strawberry">Strawberry</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Tropical Papaya Smoothie – Vegan.jpg" alt="Mango Smoothie">
+            <h3>Mango Smoothie</h3>
+            <p class="default-text">A tropical mango blend with creamy sweetness.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-mango-smoothie" class="select-option">
+                        <option value="short">Short - ₹ 200</option>
+                        <option value="medium">Tall - ₹ 270</option>
+                        <option value="grande">Grande - ₹ 320</option>
+                        <option value="venti">Venti - ₹ 370</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-mango-smoothie" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-mango-smoothie" class="select-option">
+                        <option value="none">None</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="chocolate">Chocolate</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Chocolate Milkshake.jpg" alt="Chocolate Milkshake">
+            <h3>Chocolate Milkshake</h3>
+            <p class="default-text">A decadent chocolate shake with a creamy finish.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-chocolate-shake" class="select-option">
+                        <option value="short">Short - ₹ 180</option>
+                        <option value="medium">Tall - ₹ 250</option>
+                        <option value="grande">Grande - ₹ 300</option>
+                        <option value="venti">Venti - ₹ 350</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-chocolate-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-chocolate-shake" class="select-option">
+                        <option value="chocolate">Chocolate</option>
+                        <option value="caramel">Caramel</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Peach Smoothies.jpg" alt="Peach Smoothie">
+            <h3>Peach Smoothie</h3>
+            <p class="default-text">A refreshing smoothie made with ripe peaches and cream.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-peach-smoothie" class="select-option">
+                        <option value="short">Short - ₹ 200</option>
+                        <option value="medium">Tall - ₹ 270</option>
+                        <option value="grande">Grande - ₹ 320</option>
+                        <option value="venti">Venti - ₹ 370</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-peach-smoothie" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-peach-smoothie" class="select-option">
+                        <option value="none">None</option>
+                        <option value="honey">Honey</option>
+                        <option value="coconut">Coconut</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Iced Matcha Latte.jpg" alt="Matcha Latte">
+            <h3>Matcha Latte Shake</h3>
+            <p class="default-text">A creamy, vibrant matcha shake with a rich green tea flavor.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-matcha-shake" class="select-option">
+                        <option value="short">Short - ₹ 220</option>
+                        <option value="medium">Tall - ₹ 290</option>
+                        <option value="grande">Grande - ₹ 330</option>
+                        <option value="venti">Venti - ₹ 390</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-matcha-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-matcha-shake" class="select-option">
+                        <option value="none">None</option>
+                        <option value="matcha">Matcha Powder</option>
+                        <option value="honey">Honey</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/tropicslsmoothie.jpg" alt="Tropical Smoothie">
+            <h3>Tropical Smoothie</h3>
+            <p class="default-text">A blend of tropical fruits like pineapple and mango for a refreshing treat.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-tropical-smoothie" class="select-option">
+                        <option value="short">Short - ₹ 200</option>
+                        <option value="medium">Tall - ₹ 270</option>
+                        <option value="grande">Grande - ₹ 320</option>
+                        <option value="venti">Venti - ₹ 370</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-tropical-smoothie" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-tropical-smoothie" class="select-option">
+                        <option value="none">None</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="mango">Mango</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+
+        <div class="menu-item">
+            <img src="../static/images/m2_1.jpg" alt="Caramel Shake">
+            <h3>Caramel Shake</h3>
+            <p class="default-text">A creamy caramel shake with a rich, sweet flavor.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-caramel-shake" class="select-option">
+                        <option value="short">Short - ₹ 180</option>
+                        <option value="medium">Tall - ₹ 250</option>
+                        <option value="grande">Grande - ₹ 300</option>
+                        <option value="venti">Venti - ₹ 350</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-caramel-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-caramel-shake" class="select-option">
+                        <option value="caramel">Caramel</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="hazelnut">Hazelnut</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Iced Mocha Frappuccino.jpg" alt="Mocha Frappe">
+            <h3>Frappe</h3>
+            <p class="default-text">A perfect blend of rich mocha flavor with a frosty twist.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-mocha-frappe" class="select-option">
+                        <option value="short">Short - ₹ 200</option>
+                        <option value="medium">Tall - ₹ 270</option>
+                        <option value="grande">Grande - ₹ 320</option>
+                        <option value="venti">Venti - ₹ 370</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-mocha-frappe" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-mocha-frappe" class="select-option">
+                        <option value="chocolate">Chocolate</option>
+                        <option value="caramel">Caramel</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Strawberry Milkshake.jpg" alt="Strawberry Milkshake">
+            <h3>Strawberry Milkshake</h3>
+            <p class="default-text">A sweet and creamy milkshake made with fresh strawberries.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-strawberry-shake" class="select-option">
+                        <option value="short">Short - ₹ 180</option>
+                        <option value="medium">Tall - ₹ 250</option>
+                        <option value="grande">Grande - ₹ 300</option>
+                        <option value="venti">Venti - ₹ 350</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-strawberry-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-strawberry-shake" class="select-option">
+                        <option value="none">None</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="strawberry">Strawberry</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/blueberry.jpg" alt="Blueberry Smoothie">
+            <h3>Blueberry Smoothie</h3>
+            <p class="default-text">A refreshing blend of blueberries and creamy yogurt.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-blueberry-smoothie" class="select-option">
+                        <option value="short">Short - ₹ 200</option>
+                        <option value="medium">Tall - ₹ 270</option>
+                        <option value="grande">Grande - ₹ 320</option>
+                        <option value="venti">Venti - ₹ 370</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-blueberry-smoothie" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-blueberry-smoothie" class="select-option">
+                        <option value="none">None</option>
+                        <option value="blueberry">Blueberry</option>
+                        <option value="honey">Honey</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="../static/images/Hazelnuthaven.jpg" alt="Mango Lassi">
+            <h3>Hazelnut Heaven </h3>
+            <p class="default-text">A Nutella-based shake with hazelnut flavor, blended with coffee and chocolate.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-mango-lassi" class="select-option">
+                        <option value="short">Short - ₹ 180</option>
+                        <option value="medium">Tall - ₹ 250</option>
+                        <option value="grande">Grande - ₹ 300</option>
+                        <option value="venti">Venti - ₹ 350</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-mango-lassi" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-mango-lassi" class="select-option">
+                        <option value="none">None</option>
+                        <option value="mango">Mango</option>
+                        <option value="cardamom">Cardamom</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+
+
+        <div class="menu-item">
+            <img src="../static/images/pineapplecoconut.jpg" alt="Pineapple Coconut Milkshake">
+            <h3>Pineapple Coconut Milkshake</h3>
+            <p class="default-text">A creamy milkshake with the tropical flavors of pineapple and coconut.</p>
+
+            <div class="options-container">
+                <div class="option-group">
+                    <label for="size">Select a size:</label>
+                    <select id="size-pineapple-coconut-shake" class="select-option">
+                        <option value="short">Short - ₹ 230</option>
+                        <option value="medium">Tall - ₹ 300</option>
+                        <option value="grande">Grande - ₹ 340</option>
+                        <option value="venti">Venti - ₹ 390</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="milk">Select milk type:</label>
+                    <select id="milk-pineapple-coconut-shake" class="select-option">
+                        <option value="whole">Whole Milk</option>
+                        <option value="skim">Skim Milk</option>
+                        <option value="almond">Almond Milk</option>
+                        <option value="oat">Oat Milk</option>
+                        <option value="soy">Soy Milk</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="drizzle">Select drizzle:</label>
+                    <select id="drizzle-pineapple-coconut-shake" class="select-option">
+                        <option value="none">None</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="pineapple">Pineapple</option>
+                        <option value="chocolate">Chocolate</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="menu-button">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Company</a></li>
+                    <li><a href="#">Our Coffee</a></li>
+                    <li><a href="#">About Bytes & Brew</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Careers</h3>
+                <ul>
+                    <li><a href="#">Culture and Values</a></li>
+                    <li><a href="#">Jobs at Bytes & Brew</a></li>
+                    <li><a href="#">College Achievement Plan</a></li>
+                    <li><a href="#">Alumni Community</a></li>
+                    <li><a href="#">International Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social Impact</h3>
+                <ul>
+                    <li><a href="#">Communities</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Environmental Impact</a></li>
+                    <li><a href="#">Foundation Work</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Order and Pick Up</h3>
+                <ul>
+                    <li><a href="#">Order on the App</a></li>
+                    <li><a href="#">Order on the Web</a></li>
+                    <li><a href="#">Delivery Options</a></li>
+                    <li><a href="#">Pick Up Locations</a></li>
+                </ul>
+            </div>
+            <div class="footer-column"></div>
+            <div class="footer-column"></div>
+        </div>
+
+        <div class="footer-social">
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bytes & Brew, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+<script>
+    function addToCart(itemName, category, quantity, price, imageUrl, options) {
+        const cartItem = {
+            name: itemName,
+            category: category,
+            quantity: quantity || 1,
+            price: price,
+            image: imageUrl,
+            options: options,
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(cartItem);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        alert("Item added to cart!");
+    }
+
+    function addFoodItemToCart(event) {
+        const menuItem = event.target.closest(".menu-item");
+        const itemName = menuItem.querySelector("h3").textContent.trim();
+        const category = menuItem.getAttribute("data-category") || "Drinks";
+        const imageUrl = menuItem.querySelector("img").src;
+
+        const sizeSelect = menuItem.querySelector("select[id^='size']");
+        const milkSelect = menuItem.querySelector("select[id^='milk']");
+        const drizzleSelect = menuItem.querySelector("select[id^='drizzle']");
+        
+        const selectedSize = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].value : null;
+        const selectedMilk = milkSelect ? milkSelect.options[milkSelect.selectedIndex].value : null;
+        const selectedDrizzle = drizzleSelect ? drizzleSelect.options[drizzleSelect.selectedIndex].value : null;
+
+        const priceText = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].text : "₹0";
+        const price = parseFloat(priceText.split("₹")[1]);
+
+        const options = {
+            size: selectedSize,
+            milk: selectedMilk,
+            drizzle: selectedDrizzle,
+        };
+
+        addToCart(itemName, category, 1, price, imageUrl, options);
+    }
+
+    document.querySelectorAll(".menu-button").forEach((button) => {
+        button.addEventListener("click", addFoodItemToCart);
+    });
+
+    function getPrice(itemName, size) {
+        const priceList = {
+            "Caramel Latte": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Mocha Frappe": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Vanilla Cappuccino": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Espresso": { single: 120, double: 200, triple: 300 },
+            "Irish Cream Coffee": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "White Chocolate Mocha": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Hazelnut Cold Brew": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Chai Latte": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Flat White": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Americano": { single: 120, double: 200, triple: 300 },
+            "Coconut Latte Dream": { short: 150, tall: 250, grande: 300, venti: 400 },
+            "Cinnamon Roll Latte": { short: 150, tall: 250, grande: 300, venti: 400 },
+        };
+
+        return priceList[itemName]?.[size] || 0;
+    }
+</script>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Growth Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+ 
+<meta name="theme-color" content="#0B1437">
+    <style>
+
+:root {
+    --primary-blue: #040B24;
+    --secondary-blue: #0A1A4D;
+    --beige-light: rgb(245, 232, 211);
+    --beige-medium: rgb(226, 199, 163);
+    --beige-dark: rgb(186, 152, 116);
+    --text-light: #F0F4FF;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color:rgb(116, 81, 45);
+            color:rgb(255, 251, 233);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-tab {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%); /* To center the tab vertically */
+    width: 60px;
+    height: 150px;
+    background-color:rgb(173, 139, 115); /* Green color */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transform-origin: center center; /* Ensure rotation is centered */
+}
+
+.contact-tab a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transform: rotate(-90deg); /* Rotate the text to make it vertical */
+    white-space: nowrap; /* Prevent the text from wrapping */
+}
+
+.contact-tab:hover {
+    background-color:rgb(227, 202, 165);
+}
+.hero h1{
+    color:var(--beige-light)
+}
+.content{
+    margin-left: 25%;
+}
+ 
+.mytag{
+    color:var(--beige-dark);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-size: 30px;
+   
+}
+
+
+        header {
+            background-color: var(--beige-medium);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .hero {
+            padding: 80px;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 60px;
+            font-size: 20px;
+            
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 350px;
+            margin-top: 80px;
+            gap: 20px;
+        }
+        .feature-box {
+            background:rgb(173, 139, 115);
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            color:var(--primary-blue);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .feature-box p{
+            color:var(--secondary-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+        }
+        
+        .features.scrolled .feature-box {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .feature-box:nth-child(2) {
+            z-index: 2;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .feature-box:nth-child(1) {
+            transform: translateX(50%) scale(0.5);
+        }
+        .feature-box:nth-child(3) {
+            transform: translateX(-50%) scale(0.5);
+        }
+        .features.scrolled .feature-box:nth-child(1) {
+            transform: translateX(0) scale(1);
+        }
+        .features.scrolled .feature-box:nth-child(3) {
+            transform: translateX(0) scale(1);
+        }
+        .brands {
+            margin-top: 80px;
+            overflow: hidden;
+            background:rgb(227, 202, 165);
+            padding: 30px 0;
+            white-space: nowrap;
+            position: relative;
+        }
+        .marquee {
+            display: flex;
+            animation: marquee 10s linear infinite;
+            width: max-content;
+        }
+        .marquee-content {
+            display: flex;
+        }
+        .marquee img {
+            width: 120px;
+            margin: 0 25px;
+            transition: opacity 1s ease-in-out;
+        }
+        .marquee img.fade {
+            opacity: 0.5;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+
+         
+        .row{
+            display: flex;
+            gap:50px;
+        }
+        .toggle-btn {
+            background: #ff6b33;
+            border-radius: 25px;
+            padding: 2px;
+        }
+
+        .toggle-btn button {
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            background: transparent;
+            color: white;
+        }
+
+        .toggle-btn button.active {
+            background: white;
+            color: #ff6b33;
+        }
+
+        .pricing-card {
+            border-radius: 25px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.premium {
+            background: black;
+            color: white;
+        }
+
+        .access-btn {
+            border: 2px solid #ff6b33;
+            color: #ff6b33;
+            background: white;
+            padding: 8px 30px;
+            border-radius: 25px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .access-btn:hover {
+            background: #ff6b33;
+            color: white;
+        }
+
+        .premium .access-btn {
+            background: #ff6b33;
+            color: white;
+        }
+
+        .premium .access-btn:hover {
+            background: #ff8555;
+        }
+
+        .feature-check {
+            color: #ff6b33;
+            margin-right: 8px;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -10px;
+            right: 30px;
+            background: #fef9c3;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .feature-text {
+            color: #666;
+        }
+
+        .premium .feature-text {
+            color: #999;
+        }
+
+
+ 
+/* Animated background gradient */
+@keyframes gradientMotion {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background: linear-gradient(-45deg, #040B24, #0A1A4D, #122554, #1B2B65);
+    background-size: 400% 400%;
+    animation: gradientMotion 15s ease infinite;
+}
+
+/* Container with backdrop blur */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* Row styling for equal spacing */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.col {
+    flex: 1;
+    min-width: 280px;
+    max-width: 320px;
+}
+
+/* Card styling */
+.pricing-card {
+    background: linear-gradient(145deg, rgba(10, 26, 77, 0.8), rgba(4, 11, 36, 0.9));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 232, 211, 0.1);
+    border-radius: 25px;
+    padding: 2.5rem;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(245, 232, 211, 0.1);
+}
+
+/* Premium card styling */
+.pricing-card.premium {
+    background: linear-gradient(145deg, rgba(27, 43, 101, 0.95), rgba(4, 11, 36, 0.98));
+    border: 1px solid var(--beige-light);
+}
+
+/* Button styling */
+.access-btn {
+    background: transparent;
+    border: 2px solid var(--beige-medium);
+    color: var(--beige-light);
+    padding: 12px 30px;
+    border-radius: 25px;
+    width: 100%;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.access-btn:hover {
+    background: var(--beige-medium);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.premium .access-btn {
+    background: var(--beige-medium);
+    color: var(--primary-blue);
+}
+
+.premium .access-btn:hover {
+    background: var(--beige-light);
+}
+
+/* Text styling */
+.price-amount {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: var(--beige-light);
+}
+
+.feature-check {
+    color: var(--beige-light);
+    margin-right: 8px;
+}
+
+.feature-text {
+    color: rgba(245, 232, 211, 0.8);
+}
+
+.text-muted {
+    color: rgba(245, 232, 211, 0.6) !important;
+}
+
+/* Popular tag */
+.popular-tag {
+    position: absolute;
+    top: -12px;
+    right: 30px;
+    background: var(--beige-medium);
+    color: var(--primary-blue);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.brands p{
+    color:var(--secondary-blue);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Toggle button */
+.toggle-btn {
+    background: rgba(245, 232, 211, 0.1);
+    border-radius: 25px;
+    padding: 4px;
+    border: 1px solid rgba(245, 232, 211, 0.2);
+}
+
+.toggle-btn button {
+    border: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+    background: transparent;
+    color: var(--beige-light);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn button.active {
+    background: var(--beige-medium);
+    color: var(--primary-blue);
+}
+
+/* Spacing utilities */
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 0.75rem; }
+
+/* Feature list spacing */
+.pricing-card div:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+
+
+.section {
+            display: flex;
+            min-height: 400px;
+        }
+
+        .half {
+            flex: 1;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        .black {
+            background-color:var(--primary-blue);
+            color:var(--beige-light);
+        }
+
+        .white {
+            background-color:var(--beige-light);
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .black p {
+            color: #e5e5e5;
+        }
+
+        .zakya {
+            color: #f97316;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+            }
+
+            .half {
+                padding: 3rem 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animation delays for staggered effect */
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.8s;
+        }
+       
+
+
+        .header {
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            padding: 1rem 2rem;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--beige-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--beige-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: var(--beige-light);
+            color: var(--primary-blue);
+        }
+
+        .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .nav-items a{
+            font-size: 1.2rem;
+        }
+
+        .nav-link {
+            color: var(--beige-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--beige-medium);
+        }
+
+        .nav-link.active {
+            color: var(--beige-medium);
+            font-weight: 500;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--beige-medium);
+            border-radius: 2px;
+        }
+
+        .right-items {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: var(--beige-light);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+
+        .icon-button:hover {
+            color: var(--beige-medium);
+        }
+
+        /* Icons */
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        .footer {
+            background: var(--darker-blue);
+            padding: 4rem 2rem 2rem;
+            color: var(--beige-light);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column {
+            background: var(--box-blue);
+            box-shadow: #040B24 0px 5px 15px;
+            border-radius: 20px;
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .footer-column h3 {
+            color: var(--beige-light);
+            font-size: 1.25rem;
+            
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-teal);
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: rgba(245, 232, 211, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--beige-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245, 232, 211, 0.1);
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(245, 232, 211, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .company-logo {
+            font-weight: bold;
+            color: var(--beige-light);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: rgba(245, 232, 211, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--beige-light);
+        }
+
+        .certification-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .certification-badge {
+            background: rgba(245, 232, 211, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certification-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .company-info {
+                flex-direction: column;
+            }
+        }
+
+ 
+
+        @media (max-width: 768px) {
+            .nav-items {
+                display: none;
+            }
+            
+            .header {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme theme-midnight">
+    <header class="header">
+        <a href="#" class="logo">BYTES AND BREW</a>
+        
+        <nav class="nav-items">
+            <a href="{{url_for('admin')}}" class="nav-link">Home</a>
+            <a href="{{url_for('dashboard')}}" class="nav-link active">Dashboard</a>
+            
+        
+            <a href="{{url_for('contact_us')}}" class="nav-link">CONTACT US</a>
+            <a href="{{url_for('about_us')}}" class="nav-link">ABOUT US</a>
+            <a href="{{url_for('logout')}}" class="nav-link active">LOGOUT</a>
+            
+            
+            
+        </nav>
+
+        <div class="right-items">
+            
+            <a href="
+            #"><i class="fa fa-user-o" style="font-size:36px;color: var(--beige-light);"></i></a>
+        </div>
+
+    </header>
+    {% for category,messages in get_flashed_messages(with_categories=True)%}
+    <div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">{{category}} --
+ {{messages}} <button type="button" class="btn-close" data-bs-dismiss="alert"
+ aria-label="Close"></button>
+  </div>
+     {% endfor %}
+    <main> 
+        <div class="contact-tab">
+            <a href="{{url_for('contact_us')}}">CONTACT US</a>
+        </div>
+    <section class="hero">
+        <h1 class="animate__animated animate__slideInDown">Brew Efficiency with Every Cup <br> From Beans to Profits
+
+            Streamline Your Cafe's Journey</h1>
+            <p style="color:var(--beige-medium)" class="animate__animated animate__slideInUp">Our platform is designed to help you grow your business effortlessly. Percolate Your Profits Transform your cafe's operations and watch your profits rise, just like the perfect cup of coffee.</p>
+    </section>
+    
+    
+    
+    <section class="features" id="featureSection">
+        <div class="feature-box">
+            <i class="fa fa-dollar" style="font-size:48px;color:var(--primary-blue)"></i>
+            <h2>Sell better</h2>
+            <p>Sell beyond your physical store with a powerful mobile app that allows customers to order even when your store is not open.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fa fa-briefcase" style="font-size:48px;color:var(--primary-blue)"></i>
+            <h2>Manage your entire business</h2>
+            <p>Inventory, sales and billing, customers, suppliers, credit payments, and more, all on one platform.</p>
+        </div>
+        <div class="feature-box">
+            <i class="fa fa-share-alt" style="font-size:48px;color:var(--primary-blue)"></i> 
+            <h2>Join the digital revolution</h2>
+            <p>BYTES AND BREWS helps your business transform digitally and go where your customers are.</p>
+        </div>
+    </section>
+
+    <section class="brands">
+        <p>Trusted by the most-loved Cafes near you</p>
+        <div class="marquee">
+            <div class="marquee-content">
+                <img src="../static/images/Screenshot 2025-02-15 172859.png" alt="Brand1">
+                <img src="../static/images/Screenshot 2025-02-15 172906.png" alt="Brand2">
+                <img src="../static/images/Screenshot 2025-02-15 172915.png" alt="Brand3">
+                <img src="../static/images/Screenshot 2025-02-15 172940.png" alt="Brand4">
+                <img src="../static/images/Screenshot 2025-02-15 172955.png" alt="Brand5">
+                <img src="../static/images/Screenshot 2025-02-15 173009.png" alt="Brand6">
+                <img src="../static/images/Screenshot 2025-02-15 173635.png" alt="Brand1">
+                <img src="../static/images/Screenshot 2025-02-15 173836.png" alt="Brand2">
+                <img src="../static/images/Screenshot 2025-02-15 174021.png" alt="Brand3">
+                <img src="../static/images/Screenshot 2025-02-15 174108.png" alt="Brand4">
+                <img src="../static/images/Screenshot 2025-02-15 174205.png" alt="Brand5">
+                <img src="../static/images/Screenshot 2025-02-15 174242.png" alt="Brand6">
+            </div>
+        </div>
+    </section>
+    <div class="container" style="margin-top: 50px;">
+        <!-- Toggle Section -->
+        <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center gap-3 mb-3">
+                <span>Monthly</span>
+                <div class="toggle-btn">
+                    <button class="active">Yearly</button>
+                </div>
+            </div>
+            <div>
+                <span class="text-orange" style="color: #ff6b33;">Save up to 19%</span>
+                <span>by going yearly</span>
+            </div>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-2 mb-4">
+            <!-- Free Plan -->
+            <div class="col" style="padding-bottom: 50px;">
+                <div class="pricing-card">
+                    <h2 class="fw-bold mb-3">FREE</h2>
+                    <div class="mb-4">
+                        <span class="price-amount">₹0</span>
+                        <div class="text-muted">/month billed annually</div>
+                    </div>
+                    <button class="access-btn mb-4">ACCESS BYTES AND BREWS</button>
+                    <p class="small mb-4">Essential features for businesses managed by a single owner</p>
+                    <div class="mb-1">
+                        <div class="mb-1"><span class="feature-check">✓</span> 1 Register</div>
+                        <div class="mb-1"><span class="feature-check">✓</span> 1k Users</div>
+                    </div>
+                    <div>
+                        
+                        <div class="mb-0"><span class="feature-check">✓</span> Inventory Management</div>
+                        <div class="mb-0"><span class="feature-check">✓</span> Customer Management</div>
+                        <div class="mb-0"><span class="feature-check">✓</span> Sales Management</div>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="col">
+                <div class="pricing-card">
+                    <h2 class="fw-bold mb-3">STANDARD</h2>
+                    <div class="mb-4">
+                        <span class="price-amount">₹649</span>
+                        <div class="text-muted">/month billed annually</div>
+                    </div>
+                    <button class="access-btn mb-4">ACCESS BYTES AND BREWS</button>
+                    <p class="small mb-4">Key features for businesses that are getting started</p>
+                    <div class="mb-4">
+                        <div class="mb-2"><span class="feature-check">✓</span> 2 Register</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> 1 lakh+ Users</div>
+                    </div>
+                    <div>
+                        <div class="mb-3">Everything in <span style="color: #ff6b33;">Free +</span></div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Serial & Batch Tracking</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Barcode Generation</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Price Lists</div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="col">
+                <div class="pricing-card">
+                    <h2 class="fw-bold mb-3">PRO</h2>
+                    <div class="mb-4">
+                        <span class="price-amount">₹1299</span>
+                        <div class="text-muted">/month billed annually</div>
+                    </div>
+                    <button class="access-btn mb-4">ACCESS BYTES AND BREWS</button>
+                    <p class="small mb-4">Powerful features for businesses that are expanding</p>
+                    <div class="mb-4">
+                        <div class="mb-2"><span class="feature-check">✓</span> 3 Registers</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> 10lakh+  Users</div>
+                    </div>
+                    <div>
+                        <div class="mb-3">Everything in <span style="color: #ff6b33;">Standard +</span></div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Composite Items</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Session & Cash Tracking</div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="col">
+                <div class="pricing-card premium position-relative">
+                    <div class="popular-tag">Most Popular</div>
+                    <h2 class="fw-bold mb-3">PREMIUM</h2>
+                    <div class="mb-4">
+                        <span class="price-amount">₹2099</span>
+                        <div class="text-muted">/month billed annually</div>
+                    </div>
+                    <button class="access-btn mb-4">ACCESS BYTES AND BREWS</button>
+                    <p class="small mb-4">Comprehensive features for established businesses</p>
+                    <div class="mb-4">
+                        <div class="mb-2"><span class="feature-check">✓</span> 5 Registers</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Unlimited Users</div>
+                    </div>
+                    <div>
+                        <div class="mb-3">Everything in <span style="color: #ff6b33;">Pro +</span></div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Custom Modules</div>
+                        <div class="mb-2"><span class="feature-check">✓</span> Custom Buttons</div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="text-center text-muted small">
+            * Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned
+        </div>
+    </div>
+    <div class="section">
+        <div class="half black delay-1">
+            <div class="content">
+                <h1>The <span class="zakya">Bytes and Brew</span> experience</h1>
+            </div>
+        </div>
+        <div class="half white delay-2">
+            <div class="content">
+                <h2>Get on your </h2>
+                <p>Access Bytes and Brews from anywhere, and keep your business running at all times. All your data is stored safely and securely in the Database, allowing you to access your store's information wherever you are.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="section">
+        <div class="half white delay-3">
+            <div class="content">
+                <h2>Receive support when you need it</h2>
+                <p>Need help getting started or implementing your POS? Get in touch with our team via email, chat, or a phone call—we are here to help you whenever needed.</p>
+            </div>
+        </div>
+        <div class="half black delay-4">
+            <div class="content">
+                <h2>It's easy (and free) to get started</h2>
+                <p>Get started without any learning curve. Our early customers can vouch for Bytes and Brews being extremely simple to use. We're proud to offer a solution that can help you get started from day one.</p>
+            </div>
+        </div>
+    </div>
+     
+    
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Expertise</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Analytics and Reporting</a>
+                       
+                        <a href="#" class="footer-link">Inventory Management</a>
+                        <a href="#" class="footer-link">Mobile and Remote Access</a>
+                         
+                        <a href="#" class="footer-link">Endpoint Management</a>
+                        <a href="#" class="footer-link">Order Processing</a>
+                        
+                        <a href="#" class="footer-link">Customer Database</a>
+                        <a href="#" class="footer-link">Integration Capabilities</a>
+                        <a href="#" class="footer-link">Security and Compliance</a>
+                        <a href="#" class="footer-link">Menu Management</a>
+                        <a href="#" class="footer-link">Employee Management</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">About Us</a>
+                        
+                        <a href="#" class="footer-link">News</a>
+                        <a href="#" class="footer-link">Contact</a>
+                        <a href="#" class="footer-link">Trust Centre</a>
+                        <a href="#" class="footer-link">Terms of Service</a>
+                        <a href="#" class="footer-link">Security Policy</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Targeted Industries</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">CAFES</a>
+                        <a href="#" class="footer-link">RESORTS</a>
+                        <a href="#" class="footer-link">CLOUD KITCHENS</a>
+                        <a href="#" class="footer-link">BAKERIES</a>
+                        <a href="#" class="footer-link">FOOD TRUCKS</a>
+                        <a href="#" class="footer-link">CORPORTE CAFETERIAS</a>
+                        <a href="#" class="footer-link">FAST FOOD CHAINS</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Learn & Support</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Technical Insights</a>
+                        <a href="#" class="footer-link">Events</a>
+                        <a href="#" class="footer-link">BYTES AND BREWS</a>
+                        <a href="#" class="footer-link">Client Support</a>
+                    </div>
+                    <div class="certification-badges">
+                        <div class="certification-badge">
+                            <i class="fa fa-bar-chart-o" style="font-size:48px;color:var(--beige-light)"></i>
+                        </div>
+                        <div class="certification-badge">
+                             <img src="../static/images/bytesandbrewlogo-removebg-preview.png" height="100px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="company-info">
+                    <a href="#" class="company-logo">Bytes and Brews Systems</a>
+                    <span>© 2025 All rights reserved.</span>
+                </div>
+                <div class="social-links">
+                    <i class="fa fa-facebook-f" style="font-size:25px;color:var(--beige-light)"></i>
+                    <i class="fa fa-instagram" style="font-size:25px;color:var(--beige-light)"></i>
+                    <i class="fa fa-linkedin" style="font-size:25px;color:var(--beige-light)"></i>
+                    <i class="fa fa-twitter" style="font-size:25px;color:var(--beige-light)"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+   </body> 
+    <script>
+          const toggleBtns = document.querySelectorAll('.toggle-btn button');
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        document.addEventListener("scroll", function() {
+            const featureSection = document.getElementById("featureSection");
+            if (featureSection.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                featureSection.classList.add("scrolled");
+            }
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all half sections
+        document.querySelectorAll('.half').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial animation for elements in viewport
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.half').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    section.classList.add('animate-in');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+ 
+</html>

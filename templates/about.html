@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./Css files/aboutus.css" /> -->
+    <style>
+        body {
+            margin: 0;
+            background-image: url(../static/images/l2.jpg);
+            background-repeat: no-repeat;
+            /* background-position: center; */
+            background-size: cover;
+            font-family: "Cormorant", serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+        }
+
+        #font1 {
+            position: absolute;
+            width: 50vw;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            color: white;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #font1 img {
+            height: 180px;
+            margin-left: -560px;
+            margin-top: -140px;
+            position: relative;
+        }
+
+        #font img:hover {
+            scale: 1.1;
+            transition: ease-in-out 0.2s;
+        }
+
+        .heading {
+            margin-left: -200px;
+            margin-top: -30px;
+            position: relative;
+            /* color: #674F04; */
+        }
+
+        #home-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 10px 20px;
+            /* background-image: url(../static/images/l1-removebg-preview.png); */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #home-button:hover {
+            color: white;
+            transition: 0.3s;
+            border: 2px solid white;
+        }
+
+        #name {
+            top: 23px;
+            position: absolute;
+            left: 150px;
+            font-size: 34px;
+        }
+
+        #name:hover {
+            cursor: pointer;
+        }
+
+        .button {
+            height: inherit;
+            margin-top: 0;
+            padding: px;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-right: 10px;
+
+        }
+
+        .button:hover {
+            /* background-color: rgb(238, 186, 32); */
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        hr {
+            width: 70vw;
+            border: 1px solid grey;
+
+        }
+
+        .content {
+            left: 50px;
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 37PX;
+        }
+
+        #reshover {
+            color: grey;
+        }
+
+        #reshover:hover {
+            color: black;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #name:hover {
+
+            scale: 1.1;
+            transition: ease-in-out 0.2s;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .heading:hover {
+            /* text-decoration: underline; */
+            opacity: 0.8;
+            transition: ease-in-out 0.2s;
+        }
+
+        .data {
+            display: flex;
+            margin-top: 170px;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+
+        }
+
+        .indata {
+            display: flex;
+            width: 80vw;
+            border: 1px solid black;
+            height: 30vh;
+            border-radius: 30px;
+            padding: 40px;
+            align-items: center;
+            justify-content: space-evenly;
+            /* box-shadow: 10px 10px 2px #A28F70; */
+            background-color: rgb(235, 235, 235);
+
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            /* Stacks items vertically */
+            align-items: center;
+            /* Centers the text */
+            text-align: left;
+            font-size: 18px;
+            gap: 5px;
+            /* Adds spacing between items */
+        }
+
+        .details p {
+            margin: 0;
+            /* font-weight: bold; */
+            /* Makes labels stand out */
+        }
+
+        #name1{
+            font-weight: bold;
+            font-size: 22px;
+
+        }
+
+
+        .indata:hover {
+            scale: 1.02;
+            transition: ease all 0.5s;
+            box-shadow: 10px 10px 2px #A28F70;
+        }
+
+        .selimg {
+            border: 1px solid black;
+            width: 15vw;
+            border-radius: 50%;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 100px;
+            /* background-image: url(https://imgcdn.stablediffusionweb.com/2024/3/24/17ee935b-c63a-4374-8fc3-91b2559e02f2.jpg); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .selimg2 {
+            border: 1px solid black;
+            width: 15vw;
+            border-radius: 50%;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 100px;
+            /* background-image: url(https://img.freepik.com/premium-photo/young-smiling-woman-ann-avatar-3d-vector-people-character-illustration-cartoon-minimal-style_1240525-13045.jpg); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .selimg3 {
+            border: 1px solid black;
+            width: 15vw;
+            border-radius: 50%;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 100px;
+            /* background-image: url(https://imgcdn.stablediffusionweb.com/2024/3/24/17ee935b-c63a-4374-8fc3-91b2559e02f2.jpg); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .selimg4 {
+            border: 1px solid black;
+            width: 15vw;
+            border-radius: 50%;
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 100px;
+            /* background-image: url(https://imgcdn.stablediffusionweb.com/2024/3/24/17ee935b-c63a-4374-8fc3-91b2559e02f2.jpg); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .inimg {
+            border: 1px solid black;
+            width: 14vw;
+            height: 28.5vh;
+            border-radius: 50%;
+
+        }
+
+        .details {
+            /* font-family: lemon; */
+            text-align: center;
+        }
+
+        .abt {
+            text-align: center;
+            max-width: 500px;
+            font-size: 20px;
+            /* font-family: font2; */
+        }
+
+        #contri {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            justify-content: space-evenly;
+            background-color: grey;
+            height: 40vh;
+            border-radius: 40px;
+            align-items: center;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .incontri {
+            border: 1px solid white;
+            width: 300px;
+            height: 250px;
+            border-radius: 40px;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 10px 10px 10px black;
+            /* font-family: font2; */
+            font-size: 22px;
+        }
+
+        #findus {
+            height: 140px;
+            width: 100%;
+            background-color: black;
+            width: 60vw;
+            margin-left: 20%;
+            border-radius: 40px;
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* font-family: font2; */
+            font-size: 25px;
+        }
+
+        .anton-regular {
+            font-family: "Anton", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+
+        footer {
+            opacity: 1;
+            transform: translateY(-20px);
+            animation: fadeInSlide 0.6s forwards;
+            /* background: #A28F70 rgba(0, 0, 0, 0.5); */
+            background: rgba(240, 240, 240, 0.2);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            text-align: center;
+            height: 60px;
+            padding: 15px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Home Button -->
+    <a id="home-button" href="{{url_for('admin')}}">
+        <span class="icon-close"><ion-icon name="home"></ion-icon></span>
+    </a>
+    <header>
+        <div id="font1">
+            <a href="{{url_for('admin')}}"><span id="font"><img src="../static/images/l1-removebg-preview.png" alt=""></span></a>
+            <div class="heading"><a href="./Dashboard.html" style="margin-left:70px"><b style="color: #674F04;">ABOUT
+                        US</b></a></div>
+        </div>
+    </header>
+    <br /><br />
+
+    <div class="data">
+        <div class="indata" style="background-color: #D3BD9A">
+            <div class="details">
+                <p id="name1"><b>Niyamat</b></p>
+                <p>Course - BE-AI</p>
+                <p>Batch - G34</p>
+                <p>Roll No. - 2410993361</p>
+            </div>
+            <div class="selimg">
+                <div class="inimg" style="
+              background-image: url(https://img.freepik.com/premium-photo/young-smiling-woman-ann-avatar-3d-vector-people-character-illustration-cartoon-minimal-style_1240525-13045.jpg);
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            "></div>
+            </div>
+            <div class="abt">
+                Hello! I'm Niyamat, a passionate designer and web developer
+                with a keen eye for detail and a love for creating intuitive digital
+                experiences. My expertise lies in blending creativity with
+                functionality, ensuring that every project I work on is not only
+                visually appealing but also user-friendly and efficient. From crafting
+                sleek interfaces to coding dynamic websites, I thrive on solving
+                problems and bringing ideas to life in the digital space.
+            </div>
+        </div>
+        <div class="indata" style="background-color: #D3BD9A">
+            <div class="details">
+                <p id="name1"><b>Diksha</b></p>
+                <p>Course - BE-AI</p>
+                <p>Batch - G34</p>
+                <p>Roll No. - 2410993335</p>
+            </div>
+            <div class="selimg2">
+                <div class="inimg" style="
+              background-image: url(../static/images/p1.jpg);
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            "></div>
+            </div>
+            <div class="abt">
+                Hello! I’m Diksha , a passionate web developer with a keen interest in
+                technology I thrive on creativity and enjoy transforming ideas into
+                engaging experiences. In my spare time, I love listening songs which
+                allow me to relax and discover fresh perspectives. I’m always eager to
+                learn and collaborate .
+            </div>
+        </div>
+        <div class="indata" style="background-color: #D3BD9A">
+            <div class="details">
+                <p id="name1"><b>Namha</b></p>
+                <p>Course - BE-AI</p>
+                <p>Batch - G34</p>
+                <p>Roll No. - 2410993339</p>
+            </div>
+            <div class="selimg3">
+                <div class="inimg" style="
+              background-image: url(../static/images/p3.jpg);
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            "></div>
+            </div>
+            <div class="abt">
+                I’m Namha, a dedicated web developer with a strong focus on building
+                responsive and efficient websites. I specialize in creating seamless
+                user experiences by combining clean code with modern web technologies.
+                Whether it's developing from scratch or optimizing existing projects,
+                I’m always striving to deliver high-performance, scalable solutions
+                that meet clients' needs. Problem-solving and continuous learning are
+                at the heart of my work, as I enjoy staying up-to-date with the latest
+                trends in web development.
+            </div>
+        </div>
+        <div class="indata" style="background-color: #D3BD9A">
+            <div class="details">
+                <p id="name1"><b>Natasha</b></p>
+                <p>Course - BE-AI</p>
+                <p>Batch - G34</p>
+                <p>Roll No. - 2410993342</p>
+            </div>
+            <div class="selimg4">
+                <div class="inimg" style="
+              background-image: url(../static/images/p6.jpg);
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+            "></div>
+            </div>
+            <div class="abt">
+                I’m Natasha, a dedicated web developer with a strong focus on building
+                responsive and efficient websites. I specialize in creating seamless
+                user experiences by combining clean code with modern web technologies.
+                Whether it's developing from scratch or optimizing existing projects,
+                I’m always striving to deliver high-performance, scalable solutions
+                that meet clients' needs. Problem-solving and continuous learning are
+                at the heart of my work, as I enjoy staying up-to-date with the latest
+                trends in web development.
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <footer class="bg text-white text-center py-3 fade-in">
+        <p>Last updated: 15 February 2025</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Art & Science of Coffee Brewing</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card Hover Effects */
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Video Container Styles */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover iframe {
+            transform: scale(1.02);
+        }
+
+        /* Hero Section Parallax Effect */
+        .hero-parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Animated Button Styles */
+        .animated-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .animated-button:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255,255,255,0.2);
+            transition: width 0.3s ease;
+        }
+
+        .animated-button:hover:after {
+            width: 100%;
+        }
+
+        /* Animated Number Counter */
+        .number-counter {
+            animation: countUp 2s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gradient Text Effect */
+        .gradient-text {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientFlow 3s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animated Card Background */
+        .animated-bg {
+            background: linear-gradient(270deg, #ff6b6b, #feca57, #48dbfb);
+            background-size: 600% 600%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Scroll-triggered animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #ff6b6b, #feca57);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Card Flip Effect */
+        .card-flip {
+            perspective: 1000px;
+        }
+
+        .card-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card-flip:hover .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Navigation Menu Animation */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+       
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Hero Section -->
+    <header class="relative h-screen">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1524350876685-274059332603" 
+                 alt="Professional barista brewing coffee" 
+                 class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div class="relative z-10 flex items-center justify-center h-full text-white text-center px-4">
+            <div>
+                <h1 class="text-5xl font-bold mb-4">Master the Art of Coffee Brewing</h1>
+                <p class="text-xl mb-8">From Bean to Cup: Your Journey to Coffee Excellence</p>
+                <a href="#courses" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg transition duration-300 animated-button">Begin Your Coffee Journey</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Topics -->
+    <section class="py-16 px-4 max-w-6xl mx-auto" id="courses">
+        <h2 class="text-3xl font-bold text-center mb-12">Essential Coffee Knowledge</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Brewing Methods -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vQVTNscQY0c?si=LB8Q2eMSpzNH09ZW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Brewing Methods</h3>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>• Pour-Over Techniques</li>
+                        <li>• French Press Mastery</li>
+                        <li>• Espresso Fundamentals</li>
+                        <li>• Cold Brew Secrets</li>
+                    </ul>
+                    <a href="#" class="text-orange-500 hover:text-orange-600">Start Learning →</a>
+                </div>
+            </div>
+
+            <!-- Bean Selection -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/uWWVNq5GHp4?si=01SEf_Q2MMrc6Mi-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Bean Selection</h3>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>• Origins & Flavors</li>
+                        <li>• Roast Profiles</li>
+                        <li>• Storage Tips</li>
+                        <li>• Freshness Guide</li>
+                    </ul>
+                    <a href="#" class="text-orange-500 hover:text-orange-600">Explore Beans →</a>
+                </div>
+            </div>
+
+            <!-- Equipment Guide -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/TnV9NVZg5EQ?si=skaB7II6WmF7ST05" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Equipment Guide</h3>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>• Grinder Selection</li>
+                        <li>• Brewing Devices</li>
+                        <li>• Maintenance Tips</li>
+                        <li>• Cleaning Guide</li>
+                    </ul>
+                    <a href="#" class="text-orange-500 hover:text-orange-600">View Equipment →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Learning Section -->
+    <section class="bg-gray-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Interactive Learning</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Espresso Course -->
+                <div class="rounded-lg overflow-hidden scroll-animate card-flip">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1oB1oDrDkHM?si=pd7KAewWCqTQ8szm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Espresso Masterclass</h3>
+                    <p class="text-gray-400">4-week course covering extraction, timing, and temperature</p>
+                </div>
+
+                <!-- Latte Art Course -->
+                <div class="rounded-lg overflow-hidden scroll-animate card-flip">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/NcP_b4_gDQk?si=aklljP9mvBJWtyav" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <h3 class="text-xl font-bold mt-4">Latte Art Workshop</h3>
+                    <p class="text-gray-400">Learn heart, rosetta, and tulip patterns step-by-step</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Tips Section -->
+    <section class="py-16 px-4 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Essential Brewing Tips</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-lg card-flip scroll-animate floating">
+                <div class="text-orange-500 text-4xl mb-4">01</div>
+                <h3 class="font-bold mb-2">Water Temperature</h3>
+                <p class="text-gray-600">195-205°F (90-96°C) for optimal extraction</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg card-flip scroll-animate floating">
+                <div class="text-orange-500 text-4xl mb-4">02</div>
+                <h3 class="font-bold mb-2">Grind Size</h3>
+                <p class="text-gray-600">Fine for espresso, medium for drip, coarse for French press</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg card-flip scroll-animate  floating">
+                <div class="text-orange-500 text-4xl mb-4">03</div>
+                <h3 class="font-bold mb-2">Coffee-to-Water Ratio</h3>
+                <p class="text-gray-600">1:16 for pour-over, 1:2 for espresso</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg card-flip scroll-animate floating">
+                <div class="text-orange-500 text-4xl mb-4">04</div>
+                <h3 class="font-bold mb-2">Freshness Matters</h3>
+                <p class="text-gray-600">Use beans within 30 days of roast date</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Ready to Perfect Your Coffee?</h2>
+            <p class="mb-8">Join our community of coffee enthusiasts and start your journey</p>
+            <a href="#courses"><button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg transition duration-300 animated-button">Start Learning Now</button></a>
+            <a href="{{url_for('order_now')}}"><button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg transition duration-300 animated-button">Back to Order Now page</button></a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <=
+                    (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+
+            // Number Counter Animation
+            const numbers = document.querySelectorAll('.number-counter');
+            numbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-target'));
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / 200;
+                    if (count < target) {
+                        count += increment;
+                        num.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        num.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        });
+    </script>
+</body>
+</html>

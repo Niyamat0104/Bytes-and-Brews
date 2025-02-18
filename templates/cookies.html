@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Food Menu</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e5dc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #6f4e37;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 90px;
+        }
+
+        .lora-font {
+            font-family: "Lora", serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            flex-grow: 1;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #d3bd9a;
+            font-size: 18px;
+            position: relative;
+            font-weight: bolder;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #d3bd9a;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #e0ceb2;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 130px;
+        }
+
+        .search-container input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .search-container i {
+            color: gray;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .profile-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e0ceb2;
+            margin-right: 50px;
+        }
+
+        .profile-icon i {
+            color: gray;
+            font-size: 18px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #d3bd9a;
+            /* Dark coffee background */
+            color: #6f4e37;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            background-color: #fff7f0;
+            /* Coffee cream color */
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            background-color: #d2b89b;
+            /* Coffee beige color */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 270px;
+            height: 300px;
+            border-radius: 8px;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            color: #4b3832;
+            /* Coffee bean color */
+        }
+
+        .menu-item p {
+            margin: 0;
+            color: #6f4e37;
+            /* Dark coffee text */
+            font-size: 14px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option-group {
+            width: 80%;
+        }
+
+        .option-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #4b3832;
+            text-align: left;
+        }
+
+        .select-option {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #b69b89;
+            background-color: #f8ebe4;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+
+        .select-option:hover {
+            background-color: #b69b89;
+        }
+
+        .menu-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .menu-button {
+            padding: 10px 20px;
+            background-color: #6f4e37;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-button:hover {
+            background-color: #5a3b2d;
+        }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .quantity-btn {
+            background-color: #6f4e37;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: #8d6448;
+        }
+
+        .quantity-input {
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #6f4e37;
+            border-radius: 50%;
+            background-color: white;
+            color: #333;
+            outline: none;
+        }
+
+        .footer {
+            /* background-color: #D3BD9A; */
+            background-image: url(../static/images/footer\(3\).png);
+            color: #333;
+            padding: 40px 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            font-family: "Buda", serif;
+            font-weight: 450;
+            font-style: normal;
+        }
+
+        .footer-column {
+            flex: 1 1 150px;
+            margin: 0 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .footer-social a {
+            margin: 0 15px;
+            font-size: 28px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            color: #937661;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="../static/images/l1-removebg-preview.png" alt="Custom Logo" />
+        </div>
+        <nav class="nav-links">
+            <a href="{{url_for('home')}}" class="active">Home</a>
+            <a href="{{url_for('menu')}}">Menu</a>
+            <a href="{{url_for('order_now')}}">Order</a>
+            <a href="{{url_for('cart')}}">Cart</a>
+            <a href="{{url_for('feedback')}}">Feedback</a>
+        </nav>
+        <div class="search-container">
+            <i class="fa fa-search" style="font-size:20px"></i>
+            <input type="text" placeholder="Looking for something?" />
+        </div>
+        <div class="profile-icon">
+            <a href="#"> <i class="	fa fa-user" style="font-size:32px"></i></a>
+        </div>
+    </header>
+
+    <div class="header" style="letter-spacing: 2px;">COOKIE'S</div>
+    
+    <div class="menu-container">
+        <div class="menu-item">
+            <img src="../static/images/chocochip_cookies.jpg" alt="chocochip cookies">
+            <h3>Chocolate Chip Cookies</h3>
+            <p>Freshly baked cookies with gooey chocolate chips.</p> <br>
+            <p style="font-size: 20px; font-weight: bold;">₹ 180</p>
+    
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+                <input type="text" class="quantity-input" value="1" readonly>
+                <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+            </div>
+    
+            <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+        </div>
+    
+    
+    <div class="menu-item">
+        <img src="../static/images/macrons.jpg" alt="Macrons">
+        <h3>Assorted Macarons</h3>
+        <p>Light, crispy, and filled with delicious flavors.</p><br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 250</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    
+    
+    <div class="menu-item">
+        <img src="../static/images/cherry_cookies.jpg" alt="Cherry Bomb cookie">
+        <h3>Chocolate Cherry Bomb Cookie</h3>
+        <p>Rich chocolate cookies with a luscious cherry center.</p><br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 220</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    
+    <div class="menu-item">
+        <img src="../static/images/snickerdoddles.jpg" alt="snickerdoddles">
+        <h3>GingerBread Snicker Doddles</h3>
+        <p>Soft and chewy gingerbread cookies coated in cinnamon sugar.</p><br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 200</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    
+    <div class="menu-item">
+        <img src="../static/images/chai_shortbread.jpg" alt="Chai Shortbread">
+        <h3>Chocolate Chai Shortbread Cookies</h3>
+        <p>Rich chocolate shortbread infused with warm chai spices.</p> <br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 300</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    <div class="menu-item">
+        <img src="../static/images/cinnamon rolls.jpg" alt="rolls">
+        <h3>Cardamom Cinnamon Rolls</h3>
+        <p>Soft, fluffy rolls infused with warm cinnamon and fragrant cardamom.</p> <br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 250</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    <div class="menu-item">
+        <img src="../static/images/triple_chocolate.jpg" alt="triple_chocolate">
+        <h3>Triple Chocolate Cookies</h3>
+            <p>Rich, chewy cookies packed with dark, milk, and white chocolate.</p> <br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 350</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+    <div class="menu-item">
+        <img src="../static/images/Italian_biscotti.jpg" alt="Biscooti">
+        <h3>Chocolate Dipped Italian Biscotti</h3>
+        <p>Crunchy, twice-baked Italian biscotti dipped in rich dark chocolate.</p> <br>
+        <p style="font-size: 20px; font-weight: bold;">₹ 280</p>
+    
+        <div class="quantity-container">
+            <button class="quantity-btn" onclick="decreaseQuantity(this)">−</button>
+            <input type="text" class="quantity-input" value="1" readonly>
+            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+        </div>
+    
+        <button class="menu-button" onclick="addFoodItemToCart(event)">Add to Cart</button>
+    </div>
+        </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Company</a></li>
+                    <li><a href="#">Our Coffee</a></li>
+                    <li><a href="#">About Bytes & Brew</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">Customer Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Careers</h3>
+                <ul>
+                    <li><a href="#">Culture and Values</a></li>
+                    <li><a href="#">Jobs at Bytes & Brew</a></li>
+                    <li><a href="#">College Achievement Plan</a></li>
+                    <li><a href="#">Alumni Community</a></li>
+                    <li><a href="#">International Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Social Impact</h3>
+                <ul>
+                    <li><a href="#">Communities</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Environmental Impact</a></li>
+                    <li><a href="#">Foundation Work</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Order and Pick Up</h3>
+                <ul>
+                    <li><a href="#">Order on the App</a></li>
+                    <li><a href="#">Order on the Web</a></li>
+                    <li><a href="#">Delivery Options</a></li>
+                    <li><a href="#">Pick Up Locations</a></li>
+                </ul>
+            </div>
+            <div class="footer-column"></div>
+            <div class="footer-column"></div>
+        </div>
+
+        <div class="footer-social">
+            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bytes & Brew, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+<script>
+    function increaseQuantity(button) {
+        let input = button.previousElementSibling;
+        let currentValue = parseInt(input.value, 10);
+        input.value = currentValue + 1;
+    }
+
+    function decreaseQuantity(button) {
+        let input = button.nextElementSibling;
+        let currentValue = parseInt(input.value, 10);
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    }
+
+    function addToCart(itemName, quantity, price, imageUrl) {
+        const cartItem = {
+            name: itemName,
+            quantity: quantity || 1,
+            price: price,
+            image: imageUrl
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let existingItem = cart.find(item => item.name === cartItem.name);
+
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push(cartItem);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Item added to cart!");
+    }
+
+    function addFoodItemToCart(event) {
+    const menuItem = event.target.closest(".menu-item");
+    if (!menuItem) {
+        alert("Error: Item not found.");
+        return;
+    }
+
+    const itemName = menuItem.querySelector("h3").textContent.trim();
+    const quantityInput = menuItem.querySelector(".quantity-input");
+    const quantity = quantityInput ? parseInt(quantityInput.value || "1") : 1;
+    
+    // Extract price from the p tag that contains the price
+    const priceText = menuItem.querySelector("p[style*='font-size: 20px']").textContent;
+    const price = parseFloat(priceText.replace(/[₹]/g, "").trim());
+    
+    const img = menuItem.querySelector("img");
+    const imageUrl = img ? img.getAttribute("src") : "../static/images/default-image.png";
+
+    addToCart(itemName, quantity, price, imageUrl);
+}
+
+    function getPrice(itemName) {
+        const priceList = {
+        "Chocolate Chip Cookies": 180,
+        "Assorted Macarons": 250,
+        "Chocolate Cherry Bomb Cookie": 220,
+        "GingerBread Snicker Doddles": 200,
+        "Chocolate Chai Shortbread Cookies": 300,
+        "Cardamom Cinnamon Rolls": 250,
+        "Triple Chocolate Cookies": 350,
+        "Chocolate Dipped Italian Biscotti": 280
+        };
+
+        return priceList[itemName] || 0;
+    }
+</script>
+
+</html>

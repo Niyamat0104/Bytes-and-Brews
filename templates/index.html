@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Bytes anmd Brews</title>
+    
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=account_circle"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/index.css" />
+  </head>
+  <body>
+    <header>
+      <div id="header">
+        <div>
+          <img src="../static/images/logo-removebg-preview.png" />
+        </div>
+        <div id="links">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('menu')}}">MENU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('order_now')}}">ORDER NOW</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('cart')}}">CART</a>
+            </li>
+          </ul>
+        </div>
+        <div id="order_now_button">
+          <button id="order_now"><a href="{{url_for('order_now')}}">Order Now</a></button>
+        </div>
+        <div id="admin_logo">
+          <a href="{{url_for('signup')}}"> <button style="position: relative;top:10px;">
+            <span class="material-symbols-outlined"> account_circle </span>
+          </button></a>
+        </div>
+      </div>
+    </header>
+    <!-- {% for category,messages in get_flashed_messages(with_categories=True)%}
+    <div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">{{category}} =====
+ {{messages}} <button type="button" class="btn-close" data-bs-dismiss="alert"
+ aria-label="Close"></button>
+  </div>
+     {% endfor %} -->
+    <div class="container-wrapper"> 
+    <main>
+      <h1 id="main_heading1" class="animate__animated animate__slideInLeft">
+        EXPRESSO
+      </h1>
+      <h1 id="main_heading2" class="animate__animated animate__slideInRight">
+        YOURSELF
+      </h1>
+      <!-- <img src="../static/images/main_page.jpg" id="main_image" /> -->
+      <video autoplay loop muted playsinline id="main_image">
+        <source src="../static/images/Add a heading (1).mp4" type="video/mp4">
+         
+    </video>
+    
+      
+ 
+
+
+
+
+      <div class="container">
+        <h1>
+            <div class="box"> 
+          USE <span class="img-text"
+          ><img src="../static/images/coffee_pic_1.jpg"
+             style="width: 400px;"></span>
+          <span>PREMIUM</span> </div>
+          <div class="box"> 
+          ARABICA
+           <span class="img-text"><img src="../static/images/coffee_pic_2.jpg" style="width: 330px;"></span>
+          BEANS  
+          </div>
+          <div class="box"> 
+             
+          AND 
+          <span class="img-text"><img src="../static/images/coffee_pic_6.jpg" style="width: 440px;"></span><span>FRESHLY</span>  
+          </div>
+          <div class="box"> 
+          <span> GROUND</span>
+          <span class="img-text"><img src="../static/images/coffe_pic_4.jpg" style="width: 320px;"></span>
+          
+          SPICES
+          </div> 
+          <div class="box"> 
+          TO
+          <span class="img-text"><img src="../static/images/coffee_pic_3.jpg" style="width: 180px;"></span>
+          
+          
+          <div> ACHIEVE </div>
+          <span class="img-text"><img src="../static/images/arrow_2.png" style="width: 130px; height: 150px;"></span>
+           AN </div>
+           <div class="box"> 
+          <span>UNDENIABLY</span> 
+          <span class="img-text"><img src="../static/images/coffee_pic_5.jpg" style="width: 190px;"></span>
+          <div> RICH, </div>
+          </div>
+          <div class="box">
+            <span class="img-text"><img src="../static/images/coffee_pic_7.jpg" style="width: 190px;"></span> 
+
+          FLAVOURS 
+          <span> COFFEE</span>
+        </div>
+        </h1>
+      </div>
+      <div>
+        <p class="scrolling-text">.............BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW...............BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW..............BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW..............BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW..............BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW............................BYTES AND BREW................BYTES AND BREW...................BYTES AND BREW......................BYTES AND BREW..........................BYTES AND BREW................................BYTES AND BREW..............</p>
+      </div>
+      <div class="container1">
+        <div class="box2"> 
+        <p class="roasting" style="color:#fbeee4; font-size: 100px;">OUR ROASTING</p>
+        <p class="description">A cup of coffee on a warm summer day reminds you there’s a bright side to every journey. There’s a great blend of coffee waiting for you. And it tastes great!</p>
+        </div>
+        
+        <div class="roast-options">
+            <div class="roast" id="light" onclick="selectRoast('light')">
+                <span>LIGHT ROAST</span>
+                <div class="image-container"></div>
+                <a href="{{url_for('learn')}}"><button class="arrow">→</button></a>
+            </div>
+            <div class="roast" id="medium" onclick="selectRoast('medium')">
+                <span>MEDIUM ROAST</span>
+                <div class="image-container"></div>
+                <a href="{{url_for('learn')}}"><button class="arrow">→</button></a>
+            </div>
+            <div class="roast" id="medium-dark" onclick="selectRoast('medium-dark')">
+                <span>MEDIUM-DARK ROAST</span>
+                <div class="image-container"></div>
+                <a href="{{url_for('learn')}}"><button class="arrow">→</button></a>
+            </div>
+            <div class="roast" id="dark" onclick="selectRoast('dark')">
+                <span>DARK ROAST</span>
+                <div class="image-container"></div>
+                <a href="{{url_for('learn')}}"><button class="arrow">→</button></a>
+            </div>
+        </div>
+    </div>
+     
+    <div class="banner">
+        <a href="{{url_for('order_now')}}" style="font-size: 150px;text-decoration: none;color: #fbeee4;position: relative;bottom: 120px;right:70px;text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7)" class="animate__animated animate__bounceIn animate__infinite animate__slow">ORDER NOW</a>
+    </div>
+    </main>
+    <footer>
+        <div class="f-left">
+            <img src="../static/images/logo.jpg" alt="Logo">
+        </div>
+        <div class="f-right">
+            <a href="{{url_for('home')}}">Home</a>
+            <a href="{{url_for('feedback')}}">Feedback</a>
+            <a href="#">Services</a>
+            <a href="{{url_for('order_now')}}">Order Now</a>
+        </div>
+    </footer>
+</div>
+</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../static/js/script.js"></script>
+</html>
+  

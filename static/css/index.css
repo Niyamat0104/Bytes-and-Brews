@@ -1,0 +1,461 @@
+body{
+    background-color: #14463a; 
+    font-family: 'Anton', sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+html{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    flex: 1;
+}
+header{
+    background-color: #14463a;
+    font-family: 'Anton', sans-serif;
+    color:white;
+    padding-top: 30px;
+    height: 90px;
+    font-size: 20px;
+}
+#header{
+    display: flex;
+    
+    gap:200px;
+     
+}
+#links{
+    position: relative;
+    top: 30px;
+}
+header img{
+    
+    height: 250px;
+    width: auto;
+    display: inline-block;
+    position: relative;
+    bottom: 64px;
+    right: 20px;
+}
+header a {
+    color:#fbeee4 ;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+#order_now_button{
+      position: relative;
+      left: 180px;
+      top:6px;
+}
+#order_now{
+    background-color:#14463a;
+    color:#fbeee4;
+    border-radius: 40px;
+    border-color: #fbeee4;
+    padding: 10px;
+    margin-top: 20px;
+    width: 110px;
+}
+ 
+ul{
+    margin-left: 90px;
+    gap:20px;
+}
+.nav-link{
+    color: #fbeee4 !important;
+}
+#order_now {
+background-color: #14463a;
+color: #fbeee4;
+border-radius: 40px;
+border: 2px solid #fbeee4;
+padding: 10px;
+width: 110px;
+font-size: 16px;
+font-weight: bold;
+}
+
+/* Admin Icon Styling */
+#admin_logo button {
+background-color: transparent;
+border: none;
+font-size: 45px;  /* Matches button size */
+color: #fbeee4;
+cursor: pointer;
+}
+#order_admin_container {
+display: flex;
+align-items: center;  /* Aligns both items vertically */
+gap: 0px;  /* Small gap between button and icon */
+position: absolute;
+right: 20px;
+top: 30px;
+}
+ 
+@media (max-width: 1024px) {
+.navbar {
+flex-direction: column;
+text-align: center;
+}
+.logo img {
+height: 70px;
+}
+.nav-links {
+flex-direction: row;  /* Keep links in a row */
+gap: 35px;
+}
+#order_admin_container {
+    position: static;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+}
+#main_image{
+margin-top: 0px;
+width: 100vw;
+position: relative;
+bottom: 200px;
+}
+#main_heading1{
+font-size: 200px;
+color:#fbeee4;
+margin-left: 250px;
+margin-top: 80px;
+margin-bottom: 0;
+
+}
+#main_heading2{
+font-size: 200px;
+position: relative;
+bottom: 150px;
+color:#fbeee4;
+margin-left: 550px;
+margin-top: 100px;
+margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+.navbar {
+flex-direction: column;
+text-align: center;
+}
+.logo img {
+height: 60px;  /* Smaller logo for mobile */
+}
+.nav-links {
+flex-direction: column;  /* Stack links vertically */
+gap: 10px;
+}
+.nav-links a {
+font-size: 16px;  /* Smaller font for mobile */
+}
+#order_admin_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+ 
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    margin-left: 180px;
+    margin-right: 200px;
+    position: relative;
+    bottom: 150px;
+    margin-top: 0;
+    
+     
+}
+.box{
+    display: flex;
+    gap:40px;
+}
+.container h1{
+    font-size: 120px;
+    letter-spacing: 8px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+span {
+    color: #fff; /* White color for contrast */
+}
+
+.img-text img {
+    width: 300px; /* Adjust the size */
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50px; /* This value makes the ends fully rounded */
+    overflow: hidden; /* Ensures that the image is clipped to fit the container */
+    
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+.box2{
+    display: flex;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container properly */
+}
+
+
+
+
+.roasting {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.description {
+    font-size: 17px;
+    opacity: 1;
+    max-width: 500px;
+    color: #e6a500;
+    margin: auto;
+}
+ 
+
+.container1 {
+    width: 100%;
+    max-width: auto;
+    position: relative;
+   
+    padding: 150px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.roast-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.roast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 50px;
+    background-color: #0d261a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+.roast span{
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+
+.roast:hover {
+    background-color: #15492e;
+   
+}
+
+.selected {
+    background-color: #ffb700 !important;
+    color: black !important;
+}
+
+.image-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    right: 60px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrow {
+    background-color: #ffb700;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.arrow:hover {
+    background-color: #e6a500;
+}
+
+
+.banner {
+    background: url("../images/Screenshot\ 2025-02-08\ 145236.png") center/cover no-repeat;
+    height: 1000px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+     
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  /* Footer styling */
+  footer {
+      margin-top: 0; 
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgb(20,70,58,0.1);
+      /* box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); */
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      font-family: "Buda", serif;
+      font-weight: 300;
+      font-style: normal;
+      position: relative;
+  }
+
+  .f-left img {
+      height: 120px;
+      margin-left: -30px;
+      margin-top: 15px;
+  }
+
+  /* Links container */
+  .f-right {
+      display: flex;
+      margin-left:auto;
+      margin-right: 20px;
+      gap: 30px;
+  }
+
+  .f-right a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+  }
+
+  /* Hover effect */
+  .f-right a:hover {
+      color: #f1c40f;
+  }
+ 
+
+  .container-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+
+
+
+
+
+
+  .scrolling-text {
+    color:#f1c40f;
+    letter-spacing: 10px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Ensures text doesn’t overflow */
+    display: inline-block;
+    font-size: 24px;
+    animation: moveRight 120s linear infinite; /* Controls speed and repeat */
+}
+
+@keyframes moveRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+
+
+
+  /* Container for moving text */
+.scrolling-container1 {
+    display: flex;
+    position: relative;
+    bottom: 100px;
+    width: 200%;
+    animation: scrollDiagonal 10s linear infinite;
+}
+
+ 
+.scrolling-text1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    gap: 50px;
+    white-space: nowrap;
+}
+
+ 
+.coffee-icon {
+    font-size: 35px;
+}
+
+ 
+@keyframes scrollDiagonal {
+    from {
+        transform: translate(-100%, -50%);
+    }
+    to {
+        transform: translate(0%, 50%);
+    }
+}  

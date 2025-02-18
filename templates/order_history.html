@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Order history
+  </title>
+  <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      background:  #040B24;
+
+
+      padding: 20px;
+    }
+
+    .container {
+      background: rgb(245, 232, 211);
+
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 1200px;
+      width: 100%;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    h1 {
+      color: #2d3748;
+      margin-bottom: 20px;
+      font-size: 24px;
+      animation: slideDown 0.5s ease-out;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid  #0A1A4D;
+
+      padding-bottom: 10px;
+    }
+
+    .tab {
+      padding: 8px 16px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #718096;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      color: #040B24;
+
+      border-bottom: 2px solid #040B24;
+
+    }
+
+    .table-section {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .table-section.active {
+      display: block;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      color: #040B24;
+
+      font-size: 18px;
+      margin: 20px 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid  #0A1A4D;
+
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid  #0A1A4D;
+
+    }
+
+    th {
+      background:  rgb(186, 152, 116);
+
+      color:  #0A1A4D;
+
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    td {
+      color:  #0A1A4D;
+
+    }
+
+    tr:hover {
+      background: rgb(245, 232, 211);
+
+      transition: background 0.3s ease;
+    }
+
+    .status {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .positive {
+      background: #c6f6d5;
+      color: #2f855a;
+    }
+
+    .negative {
+      background: #fed7d7;
+      color: #c53030;
+    }
+
+    .neutral {
+      background: #e2e8f0;
+      color: #4a5568;
+    }
+
+    .summary-card {
+      background: rgb(186, 152, 116);
+
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .summary-title {
+      font-weight: 600;
+      color: #4a5568;
+      margin-bottom: 10px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .summary-item {
+      background: rgb(245, 232, 211);
+
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .table-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .table-section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .summary-label {
+      font-size: 14px;
+      color: #697c98;
+    }
+
+    .summary-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-top: 5px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      th, td {
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Café Sales Report</h1>
+        <div class="tabs">
+          <button class="tab" data-section="hourly">Hourly</button>
+          <button class="tab" data-section="daily">Daily</button>
+          <button class="tab" data-section="weekly">Weekly</button>
+          <button class="tab" data-section="monthly">Monthly</button>
+        </div>
+    
+        <!-- Hourly Section -->
+        <section id="hourly" class="table-section">
+          <h2 class="section-title">Hourly Sales Report</h2>
+          <div class="summary-card">
+            <div class="summary-title">Today's Overview</div>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="summary-label">Total Sales</div>
+                <div class="summary-value">$3,526.00</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Total Orders</div>
+                <div class="summary-value">318</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Peak Hour</div>
+                <div class="summary-value">12:00 PM</div>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Hour</th>
+                  <th>Sales</th>
+                  <th>Orders</th>
+                  <th>Avg Order</th>
+                  <th>Performance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>8:00 AM</td>
+                  <td>$458.25</td>
+                  <td>45</td>
+                  <td>$10.18</td>
+                  <td><span class="status positive">+12.5%</span></td>
+                </tr>
+                <!-- Add more hourly rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+    
+        <!-- Daily Section -->
+        <section id="daily" class="table-section">
+          <h2 class="section-title">Daily Sales Report</h2>
+          <div class="summary-card">
+            <div class="summary-title">This Week's Overview</div>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="summary-label">Week's Sales</div>
+                <div class="summary-value">$24,865.00</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Best Day</div>
+                <div class="summary-value">Friday</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Weekly Trend</div>
+                <div class="summary-value">+8.3%</div>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Sales</th>
+                  <th>Orders</th>
+                  <th>Avg Order</th>
+                  <th>Performance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mon, Feb 12</td>
+                  <td>$3,458.25</td>
+                  <td>315</td>
+                  <td>$10.98</td>
+                  <td><span class="status positive">+5.2%</span></td>
+                </tr>
+                <!-- Add more daily rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+    
+        <!-- Weekly Section -->
+        <section id="weekly" class="table-section">
+          <h2 class="section-title">Weekly Sales Report</h2>
+          <div class="summary-card">
+            <div class="summary-title">This Month's Overview</div>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="summary-label">Month's Sales</div>
+                <div class="summary-value">$98,526.00</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Best Week</div>
+                <div class="summary-value">Week 3</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Monthly Trend</div>
+                <div class="summary-value">+12.4%</div>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Sales</th>
+                  <th>Orders</th>
+                  <th>Avg Order</th>
+                  <th>Performance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Week 1</td>
+                  <td>$24,458.25</td>
+                  <td>2,185</td>
+                  <td>$11.19</td>
+                  <td><span class="status positive">+9.5%</span></td>
+                </tr>
+                <!-- Add more weekly rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+    
+        <!-- Monthly Section -->
+        <section id="monthly" class="table-section">
+          <h2 class="section-title">Monthly Sales Report</h2>
+          <div class="summary-card">
+            <div class="summary-title">Year's Overview</div>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <div class="summary-label">YTD Sales</div>
+                <div class="summary-value">$1,186,432.00</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">Best Month</div>
+                <div class="summary-value">December</div>
+              </div>
+              <div class="summary-item">
+                <div class="summary-label">YoY Growth</div>
+                <div class="summary-value">+15.8%</div>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Sales</th>
+                  <th>Orders</th>
+                  <th>Avg Order</th>
+                  <th>Performance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>January</td>
+                  <td>$98,458.25</td>
+                  <td>8,845</td>
+                  <td>$11.13</td>
+                  <td><span class="status positive">+14.2%</span></td>
+                </tr>
+                <!-- Add more monthly rows -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    
+      <script>
+        // Function to initialize the tabs
+        function initializeTabs() {
+          const tabs = document.querySelectorAll('.tab');
+          const sections = document.querySelectorAll('.table-section');
+          
+          // Set first tab as active by default
+          tabs[0].classList.add('active');
+          document.getElementById('hourly').classList.add('active');
+    
+          tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+              // Remove active class from all tabs and sections
+              tabs.forEach(t => t.classList.remove('active'));
+              sections.forEach(section => section.classList.remove('active'));
+    
+              // Add active class to clicked tab
+              tab.classList.add('active');
+    
+              // Show corresponding section
+              const sectionId = tab.getAttribute('data-section');
+              document.getElementById(sectionId).classList.add('active');
+            });
+          });
+        }
+    
+        // Initialize tabs when the page loads
+        document.addEventListener('DOMContentLoaded', initializeTabs);
+      </script>
+    </body>
+    </html>

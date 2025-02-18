@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .left-panel {
+            width: 40%;
+            background-color: #6f4e37;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .back-menu {
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            margin-right: 310px;
+        }
+
+        .right-panel {
+            width: 60%;
+            padding: 20px;
+            background-color: #f5f5f5;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .cart-info {
+            flex-grow: 1;
+        }
+
+        .cart-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            background-color: #6f4e37;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            height: 45px;
+            width: 100px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 760px;
+        }
+
+        .button:hover {
+            background-color: #5a3b2c;
+            scale: 1.1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-panel">
+        <div class="header">
+            <img src="../static/images/Brown_Vintage_Coffee_Shop_Logo-removebg-preview.png" alt="Logo" width="100">
+            <a href="{{url_for('menu')}}" class="back-menu" style="margin-left: -140px;">Back to Menu</a>
+        </div>
+        <h1 style="margin-left: 10px;">Review Order ({{total_entries}})</h1>
+        <h3 style="font-size: 22px;margin-left: 15px;">Pickup Method</h3>
+        <img src="../static/images/WhatsApp_Image_2025-02-13_at_12.23.50_f4288e9f-removebg-preview.png" alt="Pick-Up"
+            style="width: 200px; height: 200px; margin-top: -20px;margin-left: -10px;">
+        <p style="font-size: 16px;">Pick-Up in Store</p>
+    </div>
+    <div class="right-panel">
+        {% for item in cart_items %}
+        <div id="cart-body">
+            <!-- Cart items will be dynamically added here -->
+            <img src="{{item.image}}" alt="{{item.name}}" 
+            onerror="this.src='../static/images/default-image.png'"
+            style="width: 80px; height: 80px; object-fit: cover;">
+       <div class="cart-info">
+           <p><strong>{{item.name}}</strong></p>
+           <p>Cup Size: <strong>{{item.cup}}</strong></p>
+           <p>Price: ₹{{item.Price}}</p>
+            
+       </div>
+       {% endfor %}
+        
+        </div>
+        <div class="cart-total"> 
+            <p>Subtotal: ₹<span id="subtotal">{{total_price}}</span></p>
+             <p>GST: ₹<span id="gst">{{total_price/10}}</span></p>
+            <h3>Total: ₹<span id="total">{{total_price+total_price/10}}</span></h3>
+        </div>
+
+        <form action="{{ url_for('new_payment') }}" method="POST" id="checkout-form">
+            <input type="hidden" name="order_items" id="cart-data" value="{{order_items}}">
+            <input type="hidden" name="subtotal" id="form-subtotal" value="{{subtotal}}">
+            <input type="hidden" name="gst" id="form-gst" value="{{gst}}">
+            <input type="hidden" name="total" id="form-total" value="{{total}}">
+            <button type="submit" class="button">Continue</button>
+        </form>
+        
+
+    </div>
+</body>
+
+</html>

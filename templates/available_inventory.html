@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System(index)</title>
+    <link rel="shortcut icon" href="../static/images/logo1-removebg-preview.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #0A1A4D;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color:  rgb(245, 232, 211);            ;
+            height: 100vh;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+            color: #214d7b;
+        }
+
+        .category-list li {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .category-list li.active {
+            background-color: #b7bccc;
+            color: #172869;
+            font-weight: bold;
+        }
+
+        .category-list li:hover:not(.active) {
+            background-color: #f0f0f0;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 260px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color:  #0A1A4D;
+            border-radius: 8px;
+            /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color:   rgb(245, 232, 211);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .stock-level {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .stock-low {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .stock-medium {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .stock-high {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .quantity-input {
+            width: 80px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        .add-btn {
+            background-color: #214d7b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .add-btn:hover {
+            background-color: #1e436a;
+        }
+
+        .flash-message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #d0d7dc;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .nav-buttons {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .nav-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>CATEGORIE'S</h2>
+        <ul class="category-list">
+            <li class="active" data-category="all">All Items</li>
+            <li data-category="Essentials">Essentials</li>
+            <li data-category="Coffee">Coffee</li>
+            <li data-category="Milk">Milk</li>
+            <li data-category="Syrup">Syrup</li>
+            <li data-category="Fruits">Fruit</li>
+            <li><a href="{{url_for('dashboard')}}" style="text-decoration: none;color: #0A1A4D;">Back To Dashboard</a></li>
+        </ul>
+
+        
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1>INVENTORY MANAGEMENT</h1>
+                <div class="nav-buttons">
+                    <a href="{{ url_for('inventory') }}" class="nav-btn" style="border-radius: 20px;color: white;background-color: rgb(206, 134, 93);font-size: 20px;">Inventory</a>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {% if category == 'error' %}error{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="products-grid">
+                {% for product in products %}
+                <div class="product-card" data-category="{{ product.category }}">
+                    <h3>{{ product.name }}</h3>
+                    <p>Category: {{ product.category }}</p>
+                    <p>Price: ₹{{ product.price }} per kg</p>
+                    {% set stock = inventory.get(product.name, 0) %}
+
+                    <form action="{{ url_for('add_to_inventory') }}" method="POST">
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="number" name="quantity" class="quantity-input" step="0.1" min="0.1"
+                            placeholder="Quantity (kg)" required style="width: 230px;">
+                        <div class="stock-level 
+                            {% if stock < 5 %}stock-low
+                            {% elif stock < 10 %}stock-medium
+                            {% else %}stock-high{% endif %}">
+                            Current Stock: {{ stock }} kg
+                        </div>
+                        <button type="submit" class="add-btn">Add to Inventory</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category filtering
+        document.querySelectorAll('.category-list li').forEach(item => {
+            item.addEventListener('click', () => {
+                // Update active item
+                document.querySelectorAll('.category-list li').forEach(li => {
+                    li.classList.remove('active');
+                });
+                item.classList.add('active');
+
+                // Filter products
+                const category = item.dataset.category;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Auto-hide flash messages
+        setTimeout(() => {
+            document.querySelectorAll('.flash-message').forEach(msg => {
+                msg.style.display = 'none';
+            });
+        }, 5000);
+    </script>
+</body>
+
+</html>
